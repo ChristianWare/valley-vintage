@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { guides } from "@/lib/pageGuides";
 import { SITE } from "@/config/site";
+import Hero from "@/components/HomePage/Hero/Hero";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -10,10 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main>
-      <span>Holistic mental health</span>
-      <h1>
-        Expert-supported and mental <br /> wellness therapy and counseling.
-      </h1>
+     <Hero />
     </main>
   );
 }

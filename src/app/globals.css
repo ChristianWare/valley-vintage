@@ -84,16 +84,10 @@ span {
   /* hyphens: auto; */
 }
 
-span {
-  font-family: var(--Hurricane);
-  font-size: 52px;
-  text-transform: lowercase;
-}
-
 h1,
 .h1 {
-  font-size: 5.4rem;
-  /* font-weight: 700; */
+  font-size: 6.4rem;
+  line-height: 1.2;
   letter-spacing: -2.56px;
   font-family: var(--TinosRegular);
   /* -webkit-font-smoothing: antialiased; */
@@ -102,42 +96,47 @@ h1,
 
 h2,
 .h2 {
-  font-size: 4rem;
-  font-weight: 500;
-  line-height: 1.1em;
-  /* letter-spacing: -2.2px; */
+  font-size: 5.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -2.56px;
+  font-family: var(--TinosRegular);
 }
 
 h3,
 .h3 {
-  font-size: 3rem;
-  font-weight: 500;
-  line-height: 1.2em;
-  /* letter-spacing: -1.6px; */
+  font-size: 4.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -1.92px;
+  font-family: var(--TinosRegular);
 }
 
 h4,
 .h4 {
-  font-size: 2.4rem;
-  font-weight: 500;
-  line-height: 1.2em;
-  /* letter-spacing: -1.3px; */
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -1.6px;
+  font-family: var(--Helvetica);
 }
 
 h5,
 .h5 {
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 3.6rem;
+  font-weight: 400;
   line-height: 1.2;
-  /* letter-spacing: -1px; */
+  letter-spacing: -1.44px;
+  font-family: var(--TinosRegular);
 }
 
 h6,
 .h6 {
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 3.2rem;
+  font-weight: 400;
   line-height: 1.2;
-  /* letter-spacing: -0.8px; */
+  letter-spacing: -1.28px;
+  font-family: var(--TinosRegular);
 }
 
 button {
@@ -205,7 +204,7 @@ select:focus {
   color: var(--black);
 } */
 
-@media screen and (max-width: 1268px) {
+/* @media screen and (max-width: 1268px) {
   h1,
   .h1 {
     font-size: 4.8rem;
@@ -214,7 +213,7 @@ select:focus {
   .h2 {
     font-size: 3.8rem;
   }
-}
+} */
 
 @media screen and (max-width: 968px) {
   html {
@@ -224,8 +223,44 @@ select:focus {
   p {
     font-size: 113.7%;
   }
-}
 
+  .h1,
+  h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .h2,
+  h2 {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .h3,
+  h3 {
+    font-size: 36px;
+    letter-spacing: -0.8px;
+  }
+
+  .h4,
+  h4 {
+    font-size: 32px;
+    letter-spacing: -0.73px;
+  }
+
+  .h5,
+  h5 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .h6,
+  h6 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+}
+/* 
 @media screen and (max-width: 768px) {
   h1,
   .h1 {
@@ -236,31 +271,49 @@ select:focus {
   .h2 {
     font-size: 3.4rem;
   }
-}
+} */
 
 @media screen and (max-width: 568px) {
   html {
     font-size: 50%;
   }
 
-  /* h1,
-  .h1 {
-    letter-spacing: -2px;
-    font-size: 42px;
+  .h1,
+  h1 {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 100%;
   }
 
-  h2,
-  .h2 {
-    letter-spacing: -2.2px;
-    font-size: 34px;
-    line-height: 1em;
+  .h2,
+  h2 {
+    font-size: 36px;
+    letter-spacing: -0.7px;
   }
 
-  h3,
-  .h3 {
-    font-size: 2.8rem;
-    letter-spacing: -1.5px;
-  } */
+  .h3,
+  h3 {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .h4,
+  h4 {
+    font-size: 28px;
+    letter-spacing: -0.4px;
+  }
+
+  .h5,
+  h5 {
+    font-size: 24px;
+    letter-spacing: -0.4px;
+  }
+
+  .h6,
+  h6 {
+    font-size: 22px;
+    letter-spacing: -0.4px;
+  }
 
   p {
     font-size: 16px;
@@ -275,26 +328,6 @@ select:focus {
     overflow: ellipsis;
   }
 }
-
-/* .toastFont {
-} */
-
-/* Only use in production */
-/* @media screen and (max-width: 480px) {
-  h1 {
-    letter-spacing: -2.5px;
-  }
-  h2 {
-    letter-spacing: -1.5px;
-    line-height: 120%;
-  }
-} */
-
-/* .toastFont {
-  font-family: var(--roboto);
-} */
-
-/* dashboard styles */
 
 .container {
   display: grid;
@@ -316,7 +349,6 @@ select:focus {
   border-bottom: 2px solid var(--stroke);
   width: 100%;
   padding-bottom: 1rem;
-  /* text-transform: capitalize; */
 }
 
 .tabs {
