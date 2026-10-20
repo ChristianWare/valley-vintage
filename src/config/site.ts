@@ -94,34 +94,35 @@ export interface SiteConfig {
   };
 }
 
-const url = "https://www.example.com";
+const url = "https://www.valleyvintagecarriage.com";
 
 export const SITE: SiteConfig = {
-  name: "Your Company",
-  legalName: "Your Company LLC",
-  slug: "your-company",
-  tagline: "Private black car service in Phoenix, Arizona",
+  name: "Valley Vintage Carriage Co.",
+  legalName: "Valley Vintage Carriage Co. LLC",
+  slug: "valley-vintage",
+  tagline: "Vintage wedding cars with chauffeurs in Phoenix, Arizona",
   description:
-    "Professional chauffeured transportation in Phoenix and Scottsdale. Flat-rate airport transfers, corporate accounts, and event transportation. Book online in under a minute.",
+    "Restored 1920s–1950s wedding cars with chauffeurs across Phoenix and Scottsdale. Ceremony arrivals, grand exits and full-day packages. Check your date online.",
   url,
   domain: new URL(url).host,
   email: {
-    info: "info@example.com",
-    reservations: "reservations@example.com",
-    support: "support@example.com",
-    admin: "admin@example.com",
-    corporate: "corporate@example.com",
-    noReply: "no-reply@example.com",
+    info: "hello@valleyvintagecarriage.com",
+    reservations: "bookings@valleyvintagecarriage.com",
+    support: "support@valleyvintagecarriage.com",
+    admin: "admin@valleyvintagecarriage.com",
+    // Planner Accounts reuse the corporate accounts feature
+    corporate: "planners@valleyvintagecarriage.com",
+    noReply: "no-reply@valleyvintagecarriage.com",
   },
   phone: {
-    display: "(000) 000-0000",
-    tel: "+10000000000",
+    display: "(602) 555-0128",
+    tel: "+16025550128",
   },
   address: {
-    street: "123 Main St, Suite 100",
+    street: "2140 N 16th St",
     city: "Phoenix",
     state: "AZ",
-    zip: "85004",
+    zip: "85006",
     country: "US",
   },
   timezone: "America/Phoenix",
@@ -132,10 +133,11 @@ export const SITE: SiteConfig = {
     region: "the Valley",
   },
   owner: {
-    name: "Owner Name",
-    title: "Founder & Owner",
+    name: "Lucy Ortega",
+    title: "Owner & Lead Coordinator",
   },
-  founded: "2020",
+  founded: "2017",
+  // Left empty on purpose: fictional handles could point at real accounts.
   social: {
     instagram: "",
     facebook: "",
@@ -145,7 +147,8 @@ export const SITE: SiteConfig = {
   },
   logo: "/brand/logo.png",
   ogImage: "/brand/og-image.png",
-  themeColor: "#000000",
+  // Carriage red, from the brand palette
+  themeColor: "#8B1E1E",
   nav: {
     partners: [],
   },
