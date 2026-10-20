@@ -48,7 +48,7 @@
   */
   /* scroll-margin-top: 440px; */
   -webkit-tap-highlight-color: transparent;
-  font-family: var(--inter);
+  /* font-family: var(--inter); */
   /* overscroll-behavior: none; */
 }
 
@@ -80,16 +80,24 @@ h5,
 h6,
 span {
   color: var(--black);
-  font-family: var(--inter);
+  font-family: var(--TinosRegular);
   /* hyphens: auto; */
+}
+
+span {
+  font-family: var(--Hurricane);
+  font-size: 52px;
+  text-transform: lowercase;
 }
 
 h1,
 .h1 {
   font-size: 5.4rem;
-  font-weight: 500;
-  line-height: 1.1em;
-  /* letter-spacing: -2.2px; */
+  /* font-weight: 700; */
+  letter-spacing: -2.56px;
+  font-family: var(--TinosRegular);
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
 }
 
 h2,
@@ -149,6 +157,7 @@ textarea {
   /* letter-spacing: -0.8px; */
   hyphens: auto;
   color: var(--black);
+  font-family: var(--Helvetica);
 }
 
 textarea {

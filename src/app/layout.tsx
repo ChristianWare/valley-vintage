@@ -9,11 +9,31 @@ import ScrollToTop from "@/components/shared/ScrollToTop/ScrollToTop";
 import PlausibleProvider from "next-plausible";
 import { SITE } from "@/config/site";
 import { serviceAreaCities } from "@/lib/cities";
+import localFont from "next/font/local";
 
-const inter = Inter({
-  variable: "--inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "800", "900"],
+
+const Helvetica = localFont({
+  src: "../../public/fonts/Helvetica.ttf",
+  variable: "--Helvetica",
+  display: "swap",
+});
+
+const Hurricane = localFont({
+  src: "../../public/fonts/Hurricane.ttf",
+  variable: "--Hurricane",
+  display: "swap",
+});
+
+const TinosRegular = localFont({
+  src: "../../public/fonts/Tinos-Regular.ttf",
+  variable: "--TinosRegular",
+  display: "swap",
+});
+
+const TinosBold = localFont({
+  src: "../../public/fonts/Tinos-Bold.ttf",
+  variable: "--TinosBold",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -73,7 +93,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-      
         {/* ── Cloudinary preconnect ── */}
         {/* <link rel='preconnect' href='https://res.cloudinary.com' /> */}
         {/* <link
@@ -106,7 +125,9 @@ export default function RootLayout({
         <meta name='apple-mobile-web-app-title' content={SITE.name} />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
       </head>
-      <body className={`${inter.variable} `}>
+      <body
+        className={`${Helvetica.variable} ${Hurricane.variable} ${TinosRegular.variable} ${TinosBold.variable} `}
+      >
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{

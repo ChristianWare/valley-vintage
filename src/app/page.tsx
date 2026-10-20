@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PagePlaceholder from "@/components/shared/PagePlaceholder/PagePlaceholder";
 import { guides } from "@/lib/pageGuides";
 import { SITE } from "@/config/site";
 
@@ -10,6 +9,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PagePlaceholder {...guides.home}></PagePlaceholder>
+    <main>
+      <span>Holistic mental health</span>
+      <h1>
+        Expert-supported and mental <br /> wellness therapy and counseling.
+      </h1>
+    </main>
   );
 }
