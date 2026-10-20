@@ -204,21 +204,112 @@
   justify-content: space-between;
 }
 
+/* ================================
+   Brand pill buttons: gold, forest, white
+   48px tall, 16px Helvetica, 38px icon circle
+   ================================ */
+.gold,
+.gold:link,
+.gold:visited,
+.forest,
+.forest:link,
+.forest:visited,
+.white,
+.white:link,
+.white:visited {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 5px 0 24px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+}
+
+/* The global span rule sets Hurricane 52px lowercase; undo it for button text */
+.gold .textContainer,
+.forest .textContainer,
+.white .textContainer {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  text-transform: none;
+}
+
+.gold .arrowContainer,
+.forest .arrowContainer,
+.white .arrowContainer {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 999px;
+}
+
+.gold .arrowWrapper,
+.forest .arrowWrapper,
+.white .arrowWrapper {
+  width: 18px;
+  height: 18px;
+}
+
+.gold .arrow,
+.forest .arrow,
+.white .arrow {
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+}
+
+/* Gold: gold pill, dark green text, white circle */
+.gold,
+.gold:link,
+.gold:visited {
+  background-color: var(--gold);
+  color: var(--green900);
+}
+
+.gold .arrowContainer {
+  background-color: var(--white);
+}
+
+.gold .arrow {
+  color: var(--green900);
+}
+
+/* Forest: dark green pill, white text, white circle */
+.forest,
+.forest:link,
+.forest:visited {
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+.forest .arrowContainer {
+  background-color: var(--white);
+}
+
+.forest .arrow {
+  color: var(--green900);
+}
+
+/* White: white pill, dark green text, dark green circle */
 .white,
 .white:link,
 .white:visited {
   background-color: var(--white);
-  color: var(--black);
-  border: 1px solid var(--white);
-  display: flex;
-  justify-content: space-between;
+  color: var(--green900);
 }
 
 .white .arrowContainer {
-  background-color: var(--black);
+  background-color: var(--green900);
 }
 
-.white .arrowContainer .arrow {
+.white .arrow {
   color: var(--white);
 }
 

@@ -28,6 +28,16 @@
   --warning300: #ffedd5;
   --lightYellow: #fff8d9;
   --darkYellow: #745000;
+
+  /* Valley Vintage brand palette */
+  --green900: #1a3020;
+  --gold: #c7a55c;
+  --green600: #48594d;
+  --green500: #66746a;
+  --green400: #96a098;
+  --green300: #b8bfba;
+  --green200: #bfbfbf;
+  --green50: #f9f6f1;
   --stickyTop: 20vh;
   --cardGap: 1rem;
   --cardMinH: clamp(300px, 20vh, 480px);
