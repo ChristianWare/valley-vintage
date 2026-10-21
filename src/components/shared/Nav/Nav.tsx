@@ -32,11 +32,9 @@ type AppRole = "USER" | "ADMIN" | "DRIVER" | "CORPORATE";
 const LINKS = [
   { text: "Home", href: "/" },
   { text: "The Fleet", href: "/fleet" },
-  { text: "Weddings", href: "/weddings" },
-  { text: "Celebrations", href: "/celebrations" },
+  { text: "Services", href: "/services" },
   { text: "Gallery", href: "/gallery" },
   { text: "Our Story", href: "/our-story" },
-  { text: "FAQ", href: "/faq" },
   ...SITE.nav.partners.map((p) => ({ text: p.text, href: p.href })),
 ];
 
