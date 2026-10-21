@@ -1,67 +1,223 @@
+/* ================================
+   Header wrapper
+   ================================ */
 .header {
-  background: #fff;
-  border-bottom: 1px solid #e5e5e5;
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  z-index: 999;
 }
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
+
+/* Floats over a full-bleed hero (home page) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Normal flow on every other page */
+.inFlow {
+  position: relative;
+  background-color: var(--green50);
+}
+
+.inFlow .navInner {
+  border: 1px solid var(--stroke);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* ================================
+   The white pill
+   ================================ */
+.navInner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
-  font-size: 15px;
-  line-height: 1;
+  padding: 8px 8px 8px 32px;
+  border-radius: 999px;
+  background-color: var(--white);
 }
-.nav a {
-  color: #444;
-  text-decoration: none;
-}
-.nav a:hover {
-  color: #111;
-}
+
 .brand {
-  font-weight: 600;
-  font-size: 16px;
-  color: #111 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green900);
+  flex-shrink: 0;
 }
+
+.logoIcon {
+  width: 25px;
+  height: 25px;
+  color: var(--green900);
+}
+
+/* .brandName is a span, so it must override the global span rule */
+.brandName {
+  font-family: var(--TinosRegular);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: -0.96px;
+  text-transform: none;
+  color: var(--green900);
+  white-space: nowrap;
+}
+
 .links {
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.active {
-  color: #111 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 4px;
+
+.link {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.16px;
+  color: var(--green900);
+  white-space: nowrap;
+  transition: color 0.3s ease;
 }
+
+.active {
+  color: var(--gold);
+}
+
 .actions {
-  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
+  flex-shrink: 0;
 }
-.btn {
-  border: 1px solid #111;
-  padding: 8px 14px;
-  color: #111 !important;
-}
-.linkBtn {
-  background: none;
-  border: 0;
+
+/* ================================
+   Hamburger (hidden on desktop)
+   ================================ */
+.hamburger {
+  display: none;
+  position: relative;
+  width: 24px;
+  height: 20px;
   padding: 0;
-  font: inherit;
-  color: #444;
+  background: transparent;
+  border: 0;
   cursor: pointer;
 }
-.linkBtn:hover {
-  color: #111;
+
+.bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--green900);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    top 0.3s ease;
 }
-@media (max-width: 720px) {
+
+.bar:nth-child(1) {
+  top: 1px;
+}
+
+.bar:nth-child(2) {
+  top: 9px;
+}
+
+.bar:nth-child(3) {
+  top: 17px;
+}
+
+.hamburgerOpen .bar:nth-child(1) {
+  top: 9px;
+  transform: rotate(45deg);
+}
+
+.hamburgerOpen .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen .bar:nth-child(3) {
+  top: 9px;
+  transform: rotate(-45deg);
+}
+
+/* ================================
+   Mobile menu panel
+   ================================ */
+.mobileMenu {
+  display: none;
+}
+
+/* ================================
+   968px and below: hamburger menu
+   ================================ */
+@media screen and (max-width: 1068px) {
+  .navInner {
+    padding: 8px 28px 8px 24px;
+    min-height: 56px;
+  }
+
+  .links,
   .actions {
-    margin-left: 0;
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobileMenuOpen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    position: absolute;
+    top: calc(100% - 4px);
+    left: 15px;
+    right: 15px;
+    padding: 24px 15px;
+    background-color: var(--green50);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 30px #0000001f;
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .navInner {
+    padding: 8px 18px 8px 15px;
+  }
+
+  .logoIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brandName {
+    font-size: 20px;
+    letter-spacing: -0.4px;
   }
 }

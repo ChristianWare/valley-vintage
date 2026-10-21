@@ -1,14 +1,46 @@
+import Image from "next/image";
+import Nav from "@/components/shared/Nav/Nav";
+import Button from "@/components/shared/Button/Button";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
-    <div>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
-    </div>
+    <section className={styles.hero}>
+      <Nav overlay />
+
+      <div className={styles.content}>
+        <div className={styles.left}>
+          <span className={styles.eyebrow}>
+            Phoenix · Scottsdale · The Valley
+          </span>
+          <h1 className={styles.heading}>
+            Arrive like it&apos;s 1928 in a hand-restored vintage wedding car.
+          </h1>
+        </div>
+
+        <div className={styles.right}>
+          <div className={styles.cardImage}>
+            <Image
+              src='/images/heroii.jpg'
+              alt='A restored vintage car decorated for a wedding'
+              fill
+              sizes='160px'
+              className={styles.img}
+            />
+          </div>
+          <div className={styles.card}>
+            <p className={styles.cardText}>
+              Five classics, one wedding per car, per day. Check your date.
+            </p>
+            <Button
+              href='/book'
+              text='Check your date'
+              btnType='forest'
+              arrow
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

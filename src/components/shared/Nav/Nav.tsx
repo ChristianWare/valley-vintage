@@ -1,20 +1,26 @@
 "use client";
 
-import NavProgress from "@/components/shared/NavProgress/NavProgress";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import NavProgress from "@/components/shared/NavProgress/NavProgress";
+import Button from "@/components/shared/Button/Button";
+import Luxury from "@/components/shared/icons/Luxury/Luxury";
 import { SITE } from "@/config/site";
 import styles from "./Nav.module.css";
 
 /**
- * Minimal site nav. Text wordmark (no logo), plain links, Book, and a
- * Log in / Dashboard / Log out cluster driven by the session.
- * The props exist only so existing callers (`<Nav background="white" />`
- * in the dashboard layouts and booking pages) keep compiling; they have
- * no effect on this version.
+ * Site nav: a white pill with the logo on the left, page links in the
+ * middle and a Book now button on the right. Below 968px the links and
+ * button move into a menu that opens from the hamburger.
+ *
+ * `overlay` floats the nav over a full-bleed hero (the home page). Every
+ * other page renders it in normal flow. The older props are still
+ * accepted so existing callers (`<Nav background="white" />`) compile.
  */
 export interface NavProps {
+  overlay?: boolean;
   navItemColor?: string;
   color?: string;
   hamburgerColor?: string;
@@ -24,14 +30,13 @@ export interface NavProps {
 type AppRole = "USER" | "ADMIN" | "DRIVER" | "CORPORATE";
 
 const LINKS = [
-  { text: "Services", href: "/services" },
-  { text: "Fleet", href: "/fleet" },
-  { text: "Airports", href: "/airports" },
-  { text: "Locations", href: "/locations" },
-  { text: "About", href: "/about" },
-  { text: "Blog", href: "/blog" },
-  { text: "Contact", href: "/contact" },
-  // Partner landing pages from config; none by default.
+  { text: "Home", href: "/" },
+  { text: "The Fleet", href: "/fleet" },
+  { text: "Weddings", href: "/weddings" },
+  { text: "Celebrations", href: "/celebrations" },
+  { text: "Gallery", href: "/gallery" },
+  { text: "Our Story", href: "/our-story" },
+  { text: "FAQ", href: "/faq" },
   ...SITE.nav.partners.map((p) => ({ text: p.text, href: p.href })),
 ];
 
@@ -42,56 +47,111 @@ function dashboardFor(roles: AppRole[]): string {
   return "/dashboard";
 }
 
-export default function Nav(props: NavProps) {
-  void props; // accepted for compatibility, intentionally unused
+export default function Nav({ overlay = false }: NavProps) {
   const pathname = usePathname() ?? "/";
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const roles = ((session?.user as { roles?: AppRole[] } | undefined)?.roles ??
     []) as AppRole[];
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile menu after navigating.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
+
+  // Close on Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
+
+  const dashboardLink = session ? (
+    <Link href={dashboardFor(roles)} className={styles.link}>
+      Dashboard
+    </Link>
+  ) : null;
 
   return (
-    <header className={styles.header}>
-      <nav className={styles.nav} aria-label="Main">
-        <Link href="/" className={styles.brand}>
-          {SITE.name}
-        </Link>
-
-        <ul className={styles.links}>
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <Link
-                href={l.href}
-                className={isActive(l.href) ? styles.active : undefined}
-              >
-                {l.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className={styles.actions}>
-          <Link href="/book" className={styles.btn}>
-            Book
+    <header
+      className={`${styles.header} ${overlay ? styles.overlay : styles.inFlow}`}
+    >
+      <div className={styles.container}>
+        <nav className={styles.navInner} aria-label='Main'>
+          <Link
+            href='/'
+            className={styles.brand}
+            aria-label={`${SITE.name} home`}
+          >
+            <Luxury className={styles.logoIcon} aria-hidden='true' />
+            <span className={styles.brandName}>{SITE.name}</span>
           </Link>
-          {status === "loading" ? null : session ? (
-            <>
-              <Link href={dashboardFor(roles)}>Dashboard</Link>
-              <button
-                type="button"
-                className={styles.linkBtn}
-                onClick={() => signOut({ callbackUrl: "/" })}
-              >
-                Log out
-              </button>
-            </>
-          ) : (
-            <Link href="/login">Log in</Link>
-          )}
+
+          <ul className={styles.links}>
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className={`${styles.link} ${isActive(l.href) ? styles.active : ""}`}
+                  aria-current={isActive(l.href) ? "page" : undefined}
+                >
+                  {l.text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className={styles.actions}>
+            {dashboardLink}
+            <Button href='/book' text='Book now' btnType='gold' arrow />
+          </div>
+
+          <button
+            type='button'
+            className={`${styles.hamburger} ${open ? styles.hamburgerOpen : ""}`}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls='mobile-menu'
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+          </button>
+        </nav>
+
+        <div
+          id='mobile-menu'
+          className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ""}`}
+          hidden={!open}
+        >
+          <ul className={styles.mobileLinks}>
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className={`${styles.link} ${isActive(l.href) ? styles.active : ""}`}
+                  aria-current={isActive(l.href) ? "page" : undefined}
+                >
+                  {l.text}
+                </Link>
+              </li>
+            ))}
+            {dashboardLink && <li>{dashboardLink}</li>}
+          </ul>
+          <Button href='/book' text='Book now' btnType='gold' arrow />
         </div>
-      </nav>
+      </div>
       <NavProgress />
     </header>
   );
