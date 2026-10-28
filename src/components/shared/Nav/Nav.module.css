@@ -49,8 +49,9 @@
 }
 
 .brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   color: var(--green900);
   flex-shrink: 0;
@@ -64,13 +65,14 @@
 
 /* .brandName is a span, so it must override the global span rule */
 .brandName {
-  font-family: var(--TinosRegular);
-  font-size: 18px;
-  line-height: 1;
-  letter-spacing: -0.96px;
+  font-family: var(--Hurricane);
+  font-size: 20px;
+  /* letter-spacing: -0.96px; */
   text-transform: none;
   color: var(--green900);
   white-space: nowrap;
+  position: relative;
+  top: 2px;
 }
 
 .links {
