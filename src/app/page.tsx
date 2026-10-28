@@ -3,6 +3,7 @@ import { guides } from "@/lib/pageGuides";
 import { SITE } from "@/config/site";
 import Hero from "@/components/HomePage/Hero/Hero";
 import AboutIntro from "@/components/HomePage/AboutIntro/AboutIntro";
+import FleetPreview from "@/components/HomePage/FleetPreview/FleetPreview";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -14,6 +15,7 @@ export default function Page() {
     <main>
       <Hero />
       <AboutIntro />
+      <FleetPreview />
     </main>
   );
 }

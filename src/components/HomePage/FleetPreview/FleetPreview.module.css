@@ -1,0 +1,255 @@
+.section {
+  background-color: var(--green900);
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* size/spacing come from the global .h3 class */
+.heading {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.copy {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--green300);
+  margin-bottom: 28px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Sticky card stack ---------- */
+.stack {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 822px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.card {
+  position: sticky;
+  top: 40px;
+  /* solid background so each card fully covers the one below it */
+  background-color: var(--green900);
+}
+
+.imgLink {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 822 / 438;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--green600);
+}
+
+.img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.imgLink:hover .img {
+  transform: scale(1.03);
+}
+
+.cardText {
+  padding-top: 24px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.num {
+  font-family: var(--TinosRegular);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+/* size/spacing come from the global .h6 class */
+.cardTitle {
+  color: var(--white);
+}
+
+.line {
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--green400);
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  animation: marquee 50s linear infinite;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  font-family: var(--TinosRegular);
+  font-size: 9.6rem;
+  line-height: 1.1;
+  letter-spacing: -3.84px;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* deco asterisk between words */
+.word::after {
+  content: "\2733";
+  font-size: 0.4em;
+  letter-spacing: 0;
+  color: var(--gold);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .img {
+    transition: none;
+  }
+}
+
+/* ---------- 968px ---------- */
+@media screen and (max-width: 968px) {
+  .section {
+    padding-top: 96px;
+    padding-bottom: 64px;
+  }
+
+  .stack {
+    gap: 80px;
+  }
+
+  .card {
+    top: 24px;
+  }
+
+  .word {
+    font-size: 72px;
+    letter-spacing: -2.88px;
+  }
+}
+
+/* ---------- 568px ---------- */
+@media screen and (max-width: 568px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 48px;
+  }
+
+  .intro {
+    margin-bottom: 48px;
+  }
+
+  .stack {
+    gap: 60px;
+  }
+
+  .card {
+    top: 16px;
+  }
+
+  .imgLink {
+    aspect-ratio: 4 / 3;
+  }
+
+  .titleRow {
+    gap: 12px;
+  }
+
+  .marquee {
+    margin-top: 72px;
+  }
+
+  .word {
+    font-size: 52px;
+    letter-spacing: -2px;
+    gap: 24px;
+    padding-right: 24px;
+  }
+}
