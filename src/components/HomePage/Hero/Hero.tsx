@@ -32,12 +32,14 @@ export default function Hero() {
             <p className={styles.cardText}>
               Five classics, one wedding per car, per day. Check your date.
             </p>
-            <Button
-              href='/book'
-              text='Check your date'
-              btnType='forest'
-              arrow
-            />
+            <div className={styles.cardBtnContainer}>
+              <Button
+                href='/book'
+                text='Check your date'
+                btnType='forest'
+                arrow
+              />
+            </div>
           </div>
         </div>
       </div>

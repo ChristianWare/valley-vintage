@@ -93,18 +93,23 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  padding: 24px 12px;
+  padding: 2rem;
   border-radius: 8px;
   background-color: var(--white);
 }
 
 .cardText {
   font-family: var(--TinosRegular);
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
   font-weight: 400;
   letter-spacing: -0.96px;
   color: var(--green900);
+}
+
+.cardBtnContainer {
+  display: grid;
+  width: 100%;
 }
 
 /* ================================
