@@ -89,7 +89,7 @@ h4,
 h5,
 h6,
 span {
-  color: var(--black);
+  color: var(--green600);
   font-family: var(--TinosRegular);
   /* hyphens: auto; */
 }

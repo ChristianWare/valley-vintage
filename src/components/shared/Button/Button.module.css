@@ -221,8 +221,8 @@
   /* justify-content: flex-start; */
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  gap: 8px;
+  /* width: 100%; */
+  gap: 1.5rem ;
   min-height: 40px;
   padding: 0 5px 0 15px;
   border: none;
