@@ -1,0 +1,135 @@
+/* ---------- Slider (above 768px) ---------- */
+.slider {
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 2px;
+  background-color: #ebe7df;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--green900);
+}
+
+.count {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--green900);
+}
+
+/* Thin rule split into three clickable segments */
+.track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 2px;
+  background-color: #e6dcc6;
+  margin-bottom: 24px;
+}
+
+.segment {
+  box-sizing: content-box;
+  height: 2px;
+  border: none;
+  padding: 10px 0;
+  margin: -10px 0;
+  background-clip: content-box;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.segmentActive {
+  background-color: var(--gold);
+}
+
+.segment:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* Slides stack in one grid cell and cross-fade */
+.viewport {
+  display: grid;
+}
+
+.slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.value {
+  font-family: var(--TinosRegular);
+  font-size: 6.4rem;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -1.92px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--green900);
+}
+
+/* ---------- Grid (768px and below) ---------- */
+.grid {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .segment {
+    transition: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider {
+    display: none;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .value {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 20px;
+  }
+}
