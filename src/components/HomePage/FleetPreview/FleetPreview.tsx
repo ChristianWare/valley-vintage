@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/shared/Button/Button";
+import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
 import styles from "./FleetPreview.module.css";
 
 // Swap these photos for the real car shots when you have them
@@ -44,7 +45,7 @@ export default function FleetPreview() {
     <section className={styles.section} aria-labelledby='fleet-heading'>
       <div className={styles.container}>
         <header className={styles.intro}>
-          <p className={styles.eyebrow}>The fleet</p>
+          <Eyebrow text='The fleet' tone='light' />
           <h2 id='fleet-heading' className={`h3 ${styles.heading}`}>
             Each car has a name. Each one has a story.
           </h2>

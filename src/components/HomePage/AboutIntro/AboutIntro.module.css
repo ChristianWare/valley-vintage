@@ -28,29 +28,6 @@
   min-width: 0;
 }
 
-/* ---------- Eyebrow ---------- */
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--green900);
-  margin-bottom: 16px;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--gold);
-  flex-shrink: 0;
-}
-
 /* ---------- Avatar stack ---------- */
 .proof {
   display: flex;
@@ -226,7 +203,7 @@
     padding: 9rem 0rem;
   }
 
-.row {
+  .row {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 24px;
   }
@@ -251,8 +228,6 @@
   .container {
     gap: 40px;
   }
-
-  
 
   .heading {
     margin-bottom: 16px;

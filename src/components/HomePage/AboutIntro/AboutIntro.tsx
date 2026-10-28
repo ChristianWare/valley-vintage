@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/shared/Button/Button";
+import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
 import AboutStats from "./AboutStats";
 import styles from "./AboutIntro.module.css";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
@@ -31,7 +32,7 @@ export default function AboutIntro() {
           {/* Row 1: label + social proof | heading, copy, button */}
           <div className={styles.row}>
             <div className={styles.left}>
-              <p className={styles.eyebrow}>About us</p>
+              <Eyebrow text='About us' />
               <div className={styles.proof}>
                 <div className={styles.avatars}>
                   {avatars.map((a) => (

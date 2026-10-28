@@ -1,0 +1,35 @@
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--Hurricane);
+  font-size: 35px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  margin-bottom: 16px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  flex-shrink: 0;
+}
+
+.dark {
+  color: var(--green900);
+}
+
+.light {
+  color: var(--white);
+}
+
+@media screen and (max-width: 568px) {
+  .eyebrow {
+    font-size: 3rem;
+  }
+}
