@@ -25,17 +25,22 @@
   text-align: center;
 }
 
+.heading {
+  max-width: 500px;
+}
+
 .eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 35px;
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--white);
   margin-bottom: 16px;
+  font-family: var(--Hurricane);
 }
 
 .eyebrow::before {
@@ -120,10 +125,6 @@
 }
 
 .num {
-  font-family: var(--TinosRegular);
-  font-size: 2.4rem;
-  line-height: 1.2;
-  font-weight: 400;
   color: var(--gold);
 }
 
@@ -205,6 +206,10 @@
     gap: 80px;
   }
 
+  .heading {
+    max-width: 450px;
+  }
+
   .card {
     top: 24px;
   }
@@ -224,6 +229,10 @@
 
   .intro {
     margin-bottom: 48px;
+  }
+
+  .heading {
+    max-width: 400px;
   }
 
   .stack {
@@ -251,5 +260,9 @@
     letter-spacing: -2px;
     gap: 24px;
     padding-right: 24px;
+  }
+
+  .eyebrow {
+    font-size: 3rem;
   }
 }

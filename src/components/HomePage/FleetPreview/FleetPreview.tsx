@@ -6,34 +6,34 @@ import styles from "./FleetPreview.module.css";
 // Swap these photos for the real car shots when you have them
 const cars = [
   {
-    name: "Rosalind",
-    year: "1928",
-    line: "Our crimson original and the face of every first ride.",
-    src: "/images/hero.jpg",
-  },
-  {
     name: "Clementine",
     year: "1931",
     line: "Top down, veil up.",
-    src: "/images/heroii.jpg",
+    src: "/images/vehicles/whiteii.jpg",
+  },
+  {
+    name: "Rosalind",
+    year: "1928",
+    line: "Our crimson original and the face of every first ride.",
+    src: "/images/vehicles/red.jpg",
   },
   {
     name: "Augustine",
     year: "1936",
     line: "Formal, black and roomy enough for the whole bridal party.",
-    src: "/images/heroiii.jpg",
+    src: "/images/vehicles/blackyellow.jpg",
   },
   {
     name: "Delphine",
     year: "1949",
     line: "Seafoam curves and a rear bench made for two.",
-    src: "/images/booking.jpg",
+    src: "/images/vehicles/burg.jpg",
   },
   {
     name: "Josephine",
     year: "1957",
     line: "Desert-rose pink and pure joy.",
-    src: "/images/faq.jpg",
+    src: "/images/vehicles/green.jpg",
   },
 ];
 
@@ -83,7 +83,9 @@ export default function FleetPreview() {
               </Link>
               <div className={styles.cardText}>
                 <div className={styles.titleRow}>
-                  <p className={styles.num}>{String(i + 1).padStart(2, "0")}</p>
+                  <p className={`${styles.num} h6`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
                   <h3 className={`h6 ${styles.cardTitle}`}>{car.name}</h3>
                 </div>
                 <p className={styles.line}>
