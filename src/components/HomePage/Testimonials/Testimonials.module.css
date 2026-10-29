@@ -74,6 +74,52 @@
   object-fit: cover;
 }
 
+/* ---------- Video background on photo cards ---------- */
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* play / pause, bottom right like the reference */
+.videoToggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.videoToggle:hover {
+  background-color: #ffffff26;
+}
+
+.videoToggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.videoToggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* keep the couple's name clear of the button */
+.photo .footer {
+  padding-right: 40px;
+}
+
 .shade {
   position: absolute;
   inset: 0;
@@ -112,14 +158,14 @@
 .quote {
   margin: 0;
   font-family: var(--Helvetica);
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 1.8rem;
+  line-height: 1.4;
   color: var(--green900);
 }
 
 .photo .quote {
   color: var(--white);
-  font-size: 15px;
+  font-size: 1.8rem;
   max-width: 520px;
 }
 
@@ -132,14 +178,14 @@
 
 .couple {
   font-family: var(--TinosRegular);
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1.2;
   letter-spacing: -0.6px;
   color: var(--green900);
 }
 
 .meta {
-  font-size: 12px;
+  font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 400;
   color: var(--green600);
@@ -154,6 +200,7 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: var(--gold);
+  display: none;
 }
 
 .link:hover {

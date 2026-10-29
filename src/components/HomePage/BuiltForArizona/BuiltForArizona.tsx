@@ -58,8 +58,8 @@ export default function BuiltForArizona() {
       <div className={styles.container}>
         <div className={styles.intro}>
           <Eyebrow text='Built for Arizona' tone='light' />
-          <h2 id='arizona-heading' className={`h3 ${styles.heading}`}>
-            Vintage looks. Desert-ready.
+          <h2 id='arizona-heading' className={styles.heading}>
+            Vintage looks. <br /> Desert-ready.
           </h2>
           <p className={styles.copy}>
             A 1920s car and a Phoenix afternoon aren&apos;t natural partners, so
@@ -94,7 +94,7 @@ export default function BuiltForArizona() {
                   />
                 </div>
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>{f.title}</h3>
+                  <h3 className={`${styles.cardTitle} h6`}>{f.title}</h3>
                   <p className={styles.cardText}>{f.text}</p>
                 </div>
               </div>

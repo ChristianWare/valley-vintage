@@ -6,7 +6,7 @@
 
 .container {
   width: 100%;
-  max-width: 1350px;
+  /* max-width: 1350px; */
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
@@ -45,7 +45,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  max-width: 990px;
+  max-width: 1350px;
   margin: 0 auto;
 }
 
@@ -72,11 +72,8 @@
 }
 
 .statLabel {
-  align-self: flex-start;
   font-family: var(--TinosRegular);
-  font-size: 2.4rem;
   line-height: 1.2;
-  letter-spacing: -0.72px;
   color: var(--white);
 }
 
@@ -89,7 +86,7 @@
 }
 
 .statText {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   font-weight: 400;
   color: var(--white);

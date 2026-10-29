@@ -36,7 +36,8 @@
 
 .contactImg {
   position: relative;
-  width: 118px;
+  width: 125px;
+  height: 100%;
   flex-shrink: 0;
   border-radius: 6px;
   overflow: hidden;
@@ -95,7 +96,7 @@
   padding: 18px;
   text-align: left;
   font-family: var(--TinosRegular);
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1.3;
   letter-spacing: -0.6px;
   color: var(--green900);
@@ -136,11 +137,11 @@
 
 .a {
   padding: 0 18px 18px;
-  font-size: 14px;
+  font-size: 1.6rem;
   line-height: 1.6;
   font-weight: 400;
   color: var(--green600);
-  max-width: 560px;
+  max-width: 700px;
 }
 
 @media (prefers-reduced-motion: reduce) {

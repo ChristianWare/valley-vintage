@@ -7,6 +7,9 @@ import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
 import Left from "@/components/shared/icons/Left/Left";
 import Right from "@/components/shared/icons/Right/Right";
 import styles from "./Testimonials.module.css";
+import LayoutWrapper from "@/components/shared/LayoutWrapper";
+import ReviewVideo from "./ReviewVideo";
+import type { VideoKey } from "@/lib/videos";
 
 type Review = {
   couple: string;
@@ -15,8 +18,10 @@ type Review = {
   date: string;
   quote: string;
   photo: string;
-  /** "text" = white card with a small photo, "photo" = full photo card */
+  /** "text" = white card with a small photo, "photo" = full video card */
   kind: "text" | "photo";
+  /** Photo cards: which Cloudinary clip plays behind the quote (src/lib/videos.ts) */
+  video?: VideoKey;
   /** layout slot on desktop */
   slot: "a" | "b" | "c" | "d" | "e" | "f";
 };
@@ -55,6 +60,7 @@ const reviews: Review[] = [
       "When Rosalind pulled up to the Botanical Garden, our guests actually gasped. Our chauffeur, Dominic, had the whole day timed to the minute. It's the part of the wedding everyone still talks about.",
     photo: "/images/vehicles/red.jpg",
     kind: "photo",
+    video: "reviewMariana",
     slot: "c",
   },
   {
@@ -66,6 +72,7 @@ const reviews: Review[] = [
       "Clementine at golden hour in the desert foothills. Our photographer couldn't stop shooting.",
     photo: "/images/vehicles/whiteii.jpg",
     kind: "photo",
+    video: "reviewAva",
     slot: "d",
   },
   {
@@ -105,88 +112,97 @@ export default function Testimonials() {
 
   return (
     <section className={styles.section} aria-labelledby='reviews-heading'>
-      <div className={styles.container}>
-        <header className={styles.intro}>
-          <Eyebrow text='Kind words' />
-          <h2 id='reviews-heading' className={`h3 ${styles.heading}`}>
-            The part of the wedding everyone still talks about.
-          </h2>
-        </header>
+      <LayoutWrapper>
+        <div className={styles.container}>
+          <header className={styles.intro}>
+            <Eyebrow text='Kind words' />
+            <h2 id='reviews-heading' className={`h3 ${styles.heading}`}>
+              The part of the wedding everyone still talks about.
+            </h2>
+          </header>
 
-        <ul ref={trackRef} className={styles.grid}>
-          {reviews.map((r) => (
-            <li
-              key={r.couple}
-              className={`${styles.card} ${styles[r.kind]} ${styles[r.slot]}`}
-            >
-              {r.kind === "photo" && (
-                <>
-                  <Image
-                    src={r.photo}
-                    alt={`${r.couple} with ${r.car} on their wedding day`}
-                    fill
-                    sizes='(max-width: 968px) 80vw, 45vw'
-                    className={styles.bgImg}
-                  />
-                  <div className={styles.shade} aria-hidden='true' />
-                </>
-              )}
+          <ul ref={trackRef} className={styles.grid}>
+            {reviews.map((r) => (
+              <li
+                key={r.couple}
+                className={`${styles.card} ${styles[r.kind]} ${styles[r.slot]}`}
+              >
+                {r.kind === "photo" && (
+                  <>
+                    {r.video ? (
+                      <ReviewVideo
+                        video={r.video}
+                        alt={`${r.couple} with ${r.car} on their wedding day`}
+                      />
+                    ) : (
+                      <Image
+                        src={r.photo}
+                        alt={`${r.couple} with ${r.car} on their wedding day`}
+                        fill
+                        sizes='(max-width: 968px) 80vw, 45vw'
+                        className={styles.bgImg}
+                      />
+                    )}
+                    <div className={styles.shade} aria-hidden='true' />
+                  </>
+                )}
 
-              {r.kind === "text" && (
-                <div className={styles.avatar}>
-                  <Image
-                    src={r.photo}
-                    alt={`${r.couple}'s wedding with ${r.car}`}
-                    fill
-                    sizes='40px'
-                    className={styles.img}
-                  />
-                </div>
-              )}
-
-              <div className={styles.cardBody}>
-                <blockquote className={styles.quote}>
-                  &ldquo;{r.quote}&rdquo;
-                </blockquote>
-
-                <div className={styles.footer}>
-                  <div>
-                    <p className={styles.couple}>{r.couple}</p>
-                    <p className={styles.meta}>
-                      {r.car} · {r.venue} · {r.date}
-                    </p>
-                    <Link href='/gallery' className={styles.link}>
-                      Read the full review
-                    </Link>
+                {r.kind === "text" && (
+                  <div className={styles.avatar}>
+                    <Image
+                      src={r.photo}
+                      alt={`${r.couple}'s wedding with ${r.car}`}
+                      fill
+                      sizes='40px'
+                      className={styles.img}
+                    />
                   </div>
-                  <p className={styles.mark} aria-hidden='true'>
-                    &ldquo;
-                  </p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+                )}
 
-        <div className={styles.controls}>
-          <button
-            type='button'
-            className={styles.arrowBtn}
-            onClick={() => scroll(-1)}
-            aria-label='Previous reviews'
-          >
-            <Left className={styles.arrowIcon} />
-          </button>
-          <button
-            type='button'
-            className={styles.arrowBtn}
-            onClick={() => scroll(1)}
-            aria-label='Next reviews'
-          >
-            <Right className={styles.arrowIcon} />
-          </button>
+                <div className={styles.cardBody}>
+                  <blockquote className={styles.quote}>
+                    &ldquo;{r.quote}&rdquo;
+                  </blockquote>
+
+                  <div className={styles.footer}>
+                    <div>
+                      <p className={styles.couple}>{r.couple}</p>
+                      <p className={styles.meta}>
+                        {r.car} · {r.venue} · {r.date}
+                      </p>
+                      <Link href='/gallery' className={styles.link}>
+                        Read the full review
+                      </Link>
+                    </div>
+                    <p className={styles.mark} aria-hidden='true'>
+                      &ldquo;
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className={styles.controls}>
+            <button
+              type='button'
+              className={styles.arrowBtn}
+              onClick={() => scroll(-1)}
+              aria-label='Previous reviews'
+            >
+              <Left className={styles.arrowIcon} />
+            </button>
+            <button
+              type='button'
+              className={styles.arrowBtn}
+              onClick={() => scroll(1)}
+              aria-label='Next reviews'
+            >
+              <Right className={styles.arrowIcon} />
+            </button>
+          </div>
         </div>
-      </div>
+      </LayoutWrapper>
     </section>
   );
 }

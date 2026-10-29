@@ -37,7 +37,7 @@
 }
 
 .statLabel {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   font-weight: 400;
   color: var(--green900);
@@ -82,6 +82,7 @@
 /* ---------- Right ---------- */
 .heading {
   color: var(--green900);
+  max-width: 600px;
   margin-bottom: 48px;
 }
 
@@ -93,7 +94,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 210px;
+  grid-template-columns: 3.5fr 2.5fr;
   gap: 32px;
   padding: 24px 0;
   border-top: 1px solid var(--green300);
@@ -106,20 +107,16 @@
 }
 
 .rowTitle {
-  font-size: 2.8rem;
-  line-height: 1.2;
-  letter-spacing: -1.12px;
-  font-weight: 400;
   color: var(--green900);
   margin-bottom: 10px;
 }
 
 .rowCopy {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
   font-weight: 400;
   color: var(--green600);
-  max-width: 320px;
+  max-width: 450px;
 }
 
 .price {
@@ -135,8 +132,8 @@
   align-items: center;
   gap: 10px;
   margin-top: auto;
-  padding-top: 20px;
-  font-size: 14px;
+  padding-top: 50px;
+  font-size: 16px;
   color: var(--green900);
 }
 
@@ -158,10 +155,14 @@
 
 .rowImg {
   position: relative;
-  aspect-ratio: 210 / 118;
+  width: 100%;
+  height: 100%;
   border-radius: 6px;
-  overflow: hidden;
-  background-color: var(--green300);
+}
+
+.img {
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .btnContainer {
@@ -222,6 +223,7 @@
 
   .rowImg {
     order: -1;
+    height: 270px;
   }
 
   .rowCopy {

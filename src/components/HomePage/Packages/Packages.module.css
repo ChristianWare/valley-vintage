@@ -1,12 +1,10 @@
 .section {
   background-color: var(--green50);
-  padding-top: 120px;
-  padding-bottom: 120px;
 }
 
 .container {
   width: 100%;
-  max-width: 1350px;
+  /* max-width: 1350px; */
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
@@ -38,7 +36,7 @@
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 990px;
+  max-width: 1350px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -47,7 +45,7 @@
 .card {
   background-color: var(--white);
   border-radius: 6px;
-  padding: 36px;
+  padding: 54px 48px 48px;
   display: flex;
   flex-direction: column;
 }
@@ -58,14 +56,15 @@
 
 .cardHead {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column-reverse;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 2rem;
 }
 
 .name {
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1.2;
   letter-spacing: -0.6px;
   font-weight: 400;
@@ -83,8 +82,8 @@
 }
 
 .price {
-  font-family: var(--Helvetica);
-  font-size: 34px;
+  font-family: var(--TinosRegular);
+  font-size: 4.8rem;
   line-height: 1.2;
   letter-spacing: -1.4px;
   font-weight: 400;
@@ -104,7 +103,7 @@
 
 .listLabel {
   font-family: var(--TinosRegular);
-  font-size: 16px;
+  font-size: 2rem;
   font-weight: 400;
   color: var(--green500);
   margin-bottom: 12px;
@@ -122,7 +121,7 @@
 .item {
   display: flex;
   gap: 10px;
-  font-size: 14px;
+  font-size: 1.6rem;
   line-height: 1.45;
   font-weight: 400;
   color: var(--green900);
@@ -179,11 +178,6 @@
 }
 
 @media screen and (max-width: 968px) {
-  .section {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
-
   .cards {
     grid-template-columns: minmax(0, 1fr);
     max-width: 480px;
@@ -191,11 +185,6 @@
 }
 
 @media screen and (max-width: 568px) {
-  .section {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
   .card {
     padding: 24px;
   }
