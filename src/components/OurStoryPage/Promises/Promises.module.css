@@ -91,7 +91,7 @@
 /* ---------- Scroll-reveal statement ---------- */
 /* size comes from the global .h3 class */
 .statement {
-  max-width: 760px;
+  max-width: 960px;
   margin: 120px auto 72px;
   text-align: center;
 }
