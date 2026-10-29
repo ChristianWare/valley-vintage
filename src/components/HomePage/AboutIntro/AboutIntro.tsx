@@ -35,8 +35,8 @@ export default function AboutIntro() {
               <Eyebrow text='About us' />
               <div className={styles.proof}>
                 <div className={styles.avatars}>
-                  {avatars.map((a) => (
-                    <div key={a.src} className={styles.avatar}>
+                  {avatars.map((a, i) => (
+                    <div key={`${a.src}-${i}`} className={styles.avatar}>
                       <Image
                         src={a.src}
                         alt={a.alt}
