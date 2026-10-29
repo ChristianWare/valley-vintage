@@ -1,0 +1,112 @@
+/* Full-bleed hero, same frame as the home hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  max-height: 1200px;
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image:
+    linear-gradient(0deg, #000000c2 0%, #00000066 55%, transparent 90%),
+    linear-gradient(#00000059, #00000059), url("/images/aboutHero.jpg");
+  background-position:
+    0 0,
+    0 0,
+    50% 50%;
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
+  background-color: var(--green900);
+}
+
+.content {
+  width: 100%;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: end;
+  column-gap: 64px;
+  row-gap: 24px;
+}
+
+.heading {
+  font-size: 90px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -3.6px;
+  color: var(--white);
+}
+
+.sparkle {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 0.12em;
+  color: var(--gold);
+  vertical-align: 0.02em;
+}
+
+/* size comes from the global .h2 class */
+.copy {
+  color: var(--white);
+  max-width: 520px;
+  justify-self: end;
+}
+
+@media screen and (max-width: 1468px) {
+  .hero {
+    height: 80vh;
+  }
+}
+
+/* 1268px: stacked, left-aligned */
+@media screen and (max-width: 1268px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heading {
+    max-width: 900px;
+  }
+
+  .copy {
+    justify-self: start;
+    max-width: 620px;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .heading {
+    font-size: 70px;
+    letter-spacing: -2.8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    max-height: 760px;
+  }
+
+  .heading {
+    font-size: 60px;
+    letter-spacing: -2.4px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .hero {
+    height: auto;
+    max-height: none;
+    padding-top: 160px;
+  }
+
+  .heading {
+    font-size: 42px;
+    letter-spacing: -1.4px;
+    line-height: 1.05;
+  }
+}

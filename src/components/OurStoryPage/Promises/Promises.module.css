@@ -1,0 +1,120 @@
+/* Cards match the home page "How it works" cards */
+.section {
+  background-color: var(--green50);
+}
+
+.container {
+  width: 100%;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 15px;
+}
+
+.intro {
+  max-width: 560px;
+  margin-bottom: 56px;
+}
+
+/* size comes from the global .h3 class */
+.heading {
+  color: var(--green900);
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 7rem;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  color: var(--gold);
+}
+
+.num {
+  font-family: var(--TinosRegular);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--green400);
+}
+
+.cardTitle {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.66px;
+  font-weight: 400;
+  color: var(--green900);
+  max-width: 260px;
+  margin-bottom: 14px;
+}
+
+.cardText {
+  font-size: 16px;
+  color: var(--green600);
+}
+
+@media screen and (max-width: 1268px) {
+  .intro {
+    margin-bottom: 48px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardTop {
+    margin-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .cardTitle {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardTop {
+    margin-bottom: 5rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .container {
+    padding: 40px 15px;
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    letter-spacing: normal;
+  }
+
+  .cardTop {
+    margin-bottom: 4rem;
+  }
+}
