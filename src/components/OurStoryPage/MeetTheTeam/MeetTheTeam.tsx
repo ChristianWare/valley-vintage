@@ -9,19 +9,19 @@ const team = [
     name: "Lucy Ortega",
     role: "Owner & Lead Coordinator",
     line: "Plans every timeline and answers most of your emails.",
-    src: "/images/vehicles/whiteiii.jpg",
+    src: "/images/ladyDriver.jpg",
   },
   {
     name: "Walt Ortega",
     role: "Founder & Head Restorer",
     line: "Still under a hood most mornings.",
-    src: "/images/vehicles/blackandwhite.jpg",
+    src: "/images/driver.jpg",
   },
   {
     name: "Dominic Reyes",
     role: "Lead Chauffeur",
     line: "Has driven more than 400 weddings and never missed a cue.",
-    src: "/images/vehicles/tan.jpg",
+    src: "/images/driverii.jpg",
   },
 ];
 
