@@ -1,76 +1,102 @@
+/* Height is set in JS so the horizontal travel matches the scroll.
+   No overflow: hidden here, or the sticky panel stops sticking. */
 .section {
-  background-color: var(--green50);
+  position: relative;
+  background-color: var(--green900);
+}
+
+/* The panel that stays on screen while the cards slide */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
-  padding-bottom: 80px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1350px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 60px 15px 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 64px;
-  align-items: center;
-}
-
-/* size comes from the global .h3 class */
-.heading {
-  color: var(--green900);
-  max-width: 520px;
-  margin-bottom: 40px;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.iconCircle {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background-color: var(--gold);
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* regular global h2 sizing */
+.heading {
   color: var(--white);
 }
 
-.stat {
-  font-family: var(--TinosRegular);
-  font-size: max(2.4rem, 20px);
-  line-height: 1.2;
-  letter-spacing: -0.72px;
-  color: var(--green600);
+/* ---------- Card track ---------- */
+.track {
+  --card-w: min(822px, calc(100vw - 60px));
+  list-style: none;
+  margin: 0;
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  /* first card starts centred, last card ends centred */
+  padding: 0 calc((100vw - var(--card-w)) / 2);
+  will-change: transform;
 }
 
-.value {
+.card {
+  flex: 0 0 var(--card-w);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  padding: 48px;
+  border-radius: 6px;
+  background-color: var(--white);
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.text {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.5;
   font-weight: 400;
+  color: var(--green600);
+  max-width: 280px;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sparkle {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+/* global h3 sizing */
+.title {
   color: var(--green900);
 }
 
+/* h4 styled as the global .h5 */
+.subtitle {
+  color: var(--green600);
+  margin-top: 8px;
+}
+
+/* 440 x 440, stays square, shrinks on short screens */
 .photo {
   position: relative;
-  aspect-ratio: 450 / 372;
+  width: min(440px, 46vh, 38vw);
+  aspect-ratio: 1 / 1;
   border-radius: 6px;
   overflow: hidden;
   background-color: var(--green300);
@@ -80,88 +106,67 @@
   object-fit: cover;
 }
 
-/* ---------- Marquee ---------- */
-.marquee {
-  margin-top: 72px;
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  animation: marquee 50s linear infinite;
-}
-
-.word {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding-right: 40px;
-  font-family: var(--TinosRegular);
-  font-size: 9.6rem;
-  line-height: 1.1;
-  letter-spacing: -3.84px;
-  color: var(--green400);
-  white-space: nowrap;
-}
-
-.word::after {
-  content: "\2733";
-  font-size: 0.4em;
-  letter-spacing: 0;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-}
-
 @media screen and (max-width: 968px) {
-  .container {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
+  .card {
+    padding: 32px;
+    gap: 24px;
   }
 
-  .word {
-    font-size: 72px;
-    letter-spacing: -2.88px;
+  .photo {
+    width: min(440px, 40vh, 40vw);
   }
 }
 
+/* ---------- 568px: stacked cards, no pinning ---------- */
 @media screen and (max-width: 568px) {
   .section {
-    padding-bottom: 48px;
+    height: auto !important;
   }
 
-  .container {
-    padding-top: 40px;
+  .sticky {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: 64px 0;
   }
 
-  .list {
-    gap: 20px;
+  .intro {
+    margin-bottom: 0;
   }
 
-  .marquee {
-    margin-top: 48px;
+  .track {
+    width: auto;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 15px;
+    transform: none !important;
   }
 
-  .word {
-    font-size: 52px;
-    letter-spacing: -2px;
-    gap: 24px;
-    padding-right: 24px;
+  .card {
+    flex: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .cardText {
+    gap: 16px;
+    padding: 4px 4px 0;
+  }
+
+  .text {
+    max-width: none;
+  }
+
+  .sparkle {
+    display: none;
+  }
+
+  .subtitle {
+    margin-top: 4px;
+  }
+
+  .photo {
+    width: 100%;
   }
 }

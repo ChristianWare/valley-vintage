@@ -12,8 +12,12 @@
 }
 
 .intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   max-width: 560px;
-  margin-bottom: 56px;
+  margin: 0 auto 56px;
 }
 
 /* size comes from the global .h3 class */
@@ -84,6 +88,58 @@
   color: var(--green600);
 }
 
+/* ---------- Scroll-reveal statement ---------- */
+/* size comes from the global .h3 class */
+.statement {
+  max-width: 760px;
+  margin: 120px auto 72px;
+  text-align: center;
+}
+
+/* each word starts light and darkens as you scroll */
+.word {
+  font-family: inherit;
+  color: var(--green300);
+  transition: color 0.35s ease;
+}
+
+.wordLit {
+  color: var(--green900);
+}
+
+/* ---------- Facts row ---------- */
+.facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 760px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.factValue {
+  font-family: var(--TinosRegular);
+  font-size: 5.6rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--gold);
+}
+
+.factLabel {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--green900);
+  margin-top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    transition: none;
+  }
+}
+
 @media screen and (max-width: 1268px) {
   .intro {
     margin-bottom: 48px;
@@ -135,5 +191,22 @@
 @media screen and (max-width: 568px) {
   .container {
     padding: 5rem 0rem;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .statement {
+    margin: 88px auto 56px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .statement {
+    margin: 64px auto 40px;
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 28px;
   }
 }
