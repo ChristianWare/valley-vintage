@@ -36,13 +36,13 @@ export default function HowItWorks() {
         <div className={styles.top}>
           <div className={styles.intro}>
             <Eyebrow text='How it works' />
-            <h2 id='how-heading' className={`h3 ${styles.heading}`}>
+            <h2 id='how-heading' className={` ${styles.heading}`}>
               Booking your car takes about three minutes.
             </h2>
           </div>
           <div className={styles.photo}>
             <Image
-              src='/images/vehicles/tan.jpg'
+              src='/images/couple.jpg'
               alt='A restored classic car parked outside a Valley wedding venue'
               fill
               sizes='(max-width: 768px) 100vw, 50vw'

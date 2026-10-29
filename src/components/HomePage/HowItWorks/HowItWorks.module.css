@@ -43,25 +43,26 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .card {
   background-color: var(--white);
   border-radius: 6px;
-  padding: 20px 18px 24px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  min-height: 230px;
+  /* min-height: 230px; */
 }
 
 .cardTop {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: auto;
-  padding-bottom: 48px;
+  margin-bottom: 7rem;
+  /* margin-bottom: auto;
+  padding-bottom: 48px; */
 }
 
 .icon {
@@ -78,22 +79,22 @@
 }
 
 .cardTitle {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   line-height: 1.2;
   letter-spacing: -0.66px;
   font-weight: 400;
   color: var(--green900);
+  max-width: 260px;
   margin-bottom: 14px;
+  text-transform: capitalize;
 }
 
 .cardText {
-  font-size: 14px;
-  line-height: 1.55;
-  font-weight: 400;
+  font-size: 16px;
   color: var(--green600);
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 1268px) {
   .section {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -107,12 +108,26 @@
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .cardTop {
+    margin-bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .cardTitle {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .top {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
+  }
+
+  .cardTop {
+    margin-bottom: 5rem;
   }
 }
 
@@ -133,5 +148,14 @@
 
   .cardTop {
     padding-bottom: 32px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    letter-spacing: normal;
+  }
+
+  .cardTop {
+    margin-bottom: 4rem;
   }
 }
