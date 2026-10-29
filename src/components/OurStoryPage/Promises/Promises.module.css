@@ -1,6 +1,7 @@
 /* Cards match the home page "How it works" cards */
 .section {
   background-color: var(--green50);
+  padding: 10rem 0rem;
 }
 
 .container {
@@ -8,7 +9,6 @@
   max-width: 1350px;
   margin-left: auto;
   margin-right: auto;
-  padding: 60px 15px;
 }
 
 .intro {
@@ -36,19 +36,30 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8rem;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
 }
 
 .cardTop {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 7rem;
 }
 
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   color: var(--gold);
+  opacity: 0.7;
 }
 
 .num {
@@ -88,20 +99,22 @@
 }
 
 @media screen and (max-width: 968px) {
+  .container {
+    padding: 7rem 0rem;
+  }
+
   .cardTitle {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    padding: 6rem 0rem;
+  }
+
   .cardTop {
     margin-bottom: 5rem;
-  }
-}
-
-@media screen and (max-width: 568px) {
-  .container {
-    padding: 40px 15px;
   }
 
   .cards {
@@ -116,5 +129,11 @@
 
   .cardTop {
     margin-bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .container {
+    padding: 5rem 0rem;
   }
 }

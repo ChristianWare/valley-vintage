@@ -38,12 +38,13 @@ export default function Promises() {
           <ol className={styles.cards}>
             {promises.map(({ Icon, title, text }, i) => (
               <li key={title} className={styles.card}>
+                <div className={styles.cardBottom}>
+                  <h3 className={styles.cardTitle}>{title}</h3>
+                  <p className={styles.cardText}>{text}</p>
+                </div>
                 <div className={styles.cardTop}>
                   <Icon className={styles.icon} aria-hidden='true' />
-                  <p className={styles.num}>{String(i + 1).padStart(2, "0")}</p>
                 </div>
-                <h3 className={styles.cardTitle}>{title}</h3>
-                <p className={styles.cardText}>{text}</p>
               </li>
             ))}
           </ol>

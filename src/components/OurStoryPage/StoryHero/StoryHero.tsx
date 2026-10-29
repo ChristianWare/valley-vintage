@@ -12,10 +12,10 @@ export default function StoryHero() {
         <div className={styles.content}>
           <h1 className={styles.heading}>
             <Sparkle className={styles.sparkle} />
-            It started with a barn and a rusty red sedan.
+            Our Story
           </h1>
           <p className={`h2 ${styles.copy}`}>
-            A family garage in central Phoenix, five cars and a lot of polish.
+            It started with a barn and a rusty red sedan.
           </p>
         </div>
       </LayoutWrapper>
