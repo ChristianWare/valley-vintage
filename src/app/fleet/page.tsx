@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
-    import PagePlaceholder from "@/components/shared/PagePlaceholder/PagePlaceholder";
-    import { guides } from "@/lib/pageGuides";
-    import { SITE } from "@/config/site";
-    import Link from "next/link";
-import { fleetData } from "@/lib/data";
+import { SITE } from "@/config/site";
+import FleetHero from "@/components/FleetPage/FleetHero/FleetHero";
+import FleetCards from "@/components/FleetPage/FleetCards/FleetCards";
+import FleetCare from "@/components/FleetPage/FleetCare/FleetCare";
+import Packages from "@/components/HomePage/Packages/Packages";
+import HomeFaq from "@/components/HomePage/HomeFaq/HomeFaq";
+import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
-    export const metadata: Metadata = {
-      title: "Fleet",
-      description: `The ${SITE.name} fleet: sedans, SUVs, and Sprinters with passenger and luggage capacity.`,
-    };
+export const metadata: Metadata = {
+  title: "Our Classic Wedding Cars",
+  description: `Meet Rosalind, Clementine, Augustine, Delphine and Josephine, five restored classics for Valley weddings from ${SITE.name}.`,
+  alternates: { canonical: "/fleet" },
+};
 
-    export default function Page() {
-      return (
-        <PagePlaceholder {...guides.fleet}>
-          <h2>Vehicles (from src/lib/data.ts)</h2>
-          <ul>
-            {fleetData.map((v) => (
-              <li key={v.slug}>
-                <Link href={`/fleet/${v.slug}`}>{v.name}</Link> — {v.passengers} passengers, {v.luggage} bags. {v.bestFor}.
-              </li>
-            ))}
-          </ul>
-        </PagePlaceholder>
-      );
-    }
+export default function Page() {
+  return (
+    <main>
+      <FleetHero />
+      <FleetCards />
+      <FleetCare />
+      <Packages />
+      <HomeFaq />
+      <FinalCta />
+    </main>
+  );
+}
