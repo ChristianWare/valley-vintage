@@ -1,9 +1,12 @@
 "use client";
 
-// "By the numbers": four white cards that slide sideways as you scroll.
+// "By the numbers": white cards that slide sideways as you scroll.
 // The section pins to the screen, vertical scrolling moves the cards from
 // right to left, and once the last card is in place the page scrolls on
 // as normal. At 568px and below the cards simply stack.
+//
+// Reused on other pages (e.g. Wedding Services) by passing your own
+// eyebrow, heading and cards. With no props it shows the Our Story numbers.
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
@@ -12,7 +15,14 @@ import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import Sparkle from "@/components/shared/icons/Sparkle/Sparkle";
 import styles from "./ByTheNumbers.module.css";
 
-const cards = [
+export type ScrollCard = {
+  text: string;
+  title: string;
+  subtitle: string;
+  src: string;
+};
+
+const defaultCards: ScrollCard[] = [
   {
     text: "Every car restored by hand in our own garage off 16th Street.",
     title: "5 restored classics",
@@ -42,7 +52,18 @@ const cards = [
 // Matches the stacked layout in the CSS
 const STACKED = "(max-width: 568px)";
 
-export default function ByTheNumbers() {
+export default function ByTheNumbers({
+  eyebrow = "By the numbers",
+  heading = "Nine years on the road, and every ride still matters",
+  headingId = "numbers-heading",
+  cards = defaultCards,
+}: {
+  eyebrow?: string;
+  heading?: string;
+  /** Unique per page, used for the section's accessible name */
+  headingId?: string;
+  cards?: ScrollCard[];
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
 
@@ -92,20 +113,20 @@ export default function ByTheNumbers() {
       stacked.removeEventListener("change", measure);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [cards]);
 
   return (
     <section
       ref={sectionRef}
       className={styles.section}
-      aria-labelledby='numbers-heading'
+      aria-labelledby={headingId}
     >
       <div className={styles.sticky}>
         <LayoutWrapper>
           <header className={styles.intro}>
-            <Eyebrow text='By the numbers' tone='light' />
-            <h2 id='numbers-heading' className={styles.heading}>
-              Nine years on the road, and every ride still matters
+            <Eyebrow text={eyebrow} tone='light' />
+            <h2 id={headingId} className={styles.heading}>
+              {heading}
             </h2>
           </header>
         </LayoutWrapper>

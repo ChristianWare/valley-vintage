@@ -1,0 +1,132 @@
+.hero {
+  background-color: var(--green50);
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* regular global h1 sizing */
+.heading {
+  font-weight: 400;
+  color: var(--green900);
+  margin-bottom: 28px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.outline {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--green900);
+  border-radius: 999px;
+  font-size: max(1.6rem, 16px);
+  color: var(--green900);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.outline:hover {
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+/* ---------- Image marquee ---------- */
+.marquee {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  animation: marquee 50s linear infinite;
+}
+
+.photo {
+  position: relative;
+  min-width: 424px;
+  height: 424px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--green300);
+}
+
+.img {
+  object-fit: cover;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* half the track = one set of photos plus its gaps */
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+/* h2 styled as the global .h6 */
+.copy {
+  max-width: 872px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--green600);
+}
+
+@media screen and (max-width: 968px) {
+  .hero {
+    padding-top: 110px;
+  }
+
+  .photo {
+    min-width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .photo {
+    min-width: 250px;
+    height: 250px;
+  }
+
+  .track {
+    gap: 12px;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - 6px));
+    }
+  }
+}
