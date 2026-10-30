@@ -1,0 +1,125 @@
+/* Same look as the home page wedding film, but full width */
+.section {
+  background-color: var(--green50);
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1440 / 740;
+  min-height: 560px;
+  overflow: hidden;
+  background-color: var(--green900);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #000000e0 0%, #00000080 40%, #0000001a 75%);
+}
+
+.playBtn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid #ffffffb3;
+  background-color: #ffffff14;
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.playBtn:hover {
+  background-color: #ffffff33;
+}
+
+.playBtn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.playIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heading {
+  font-size: clamp(40px, 6.4vw, 104px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  color: var(--white);
+  max-width: 1100px;
+  margin-bottom: 28px;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.copyWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 620px;
+}
+
+.copy {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.6;
+  font-weight: 400;
+  color: #ffffffd9;
+}
+
+@media screen and (max-width: 968px) {
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .frame {
+    aspect-ratio: auto;
+    min-height: 680px;
+  }
+
+  .playBtn {
+    top: 24px;
+    right: 24px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .frame {
+    min-height: 640px;
+  }
+}

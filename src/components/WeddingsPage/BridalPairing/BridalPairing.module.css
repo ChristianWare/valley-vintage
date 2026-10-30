@@ -1,0 +1,136 @@
+.section {
+  background-color: var(--green50);
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 18px;
+}
+
+/* the photo always fills the height of the right side */
+.photo {
+  position: relative;
+  min-height: 460px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--green300);
+}
+
+.img {
+  object-fit: cover;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* regular global h2 sizing */
+.heading {
+  color: var(--green900);
+  margin-bottom: 16px;
+}
+
+.copy {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--green600);
+  max-width: 540px;
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+}
+
+.cardTitle {
+  font-size: max(2.4rem, 20px);
+  line-height: 1.2;
+  letter-spacing: -0.72px;
+  font-weight: 400;
+  color: var(--green900);
+  margin-bottom: 12px;
+}
+
+.cardText {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--green600);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.note {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--green900);
+  max-width: 440px;
+}
+
+@media screen and (max-width: 968px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  }
+
+  .card {
+    gap: 32px;
+  }
+
+  .cardTitle {
+    font-size: max(2.2rem, 20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .photo {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}

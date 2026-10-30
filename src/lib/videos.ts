@@ -30,6 +30,13 @@ export const VIDEOS = {
     poster: "/images/vehicles/whiteii.jpg",
     width: 720,
   },
+  // ▼ Wedding Services "Reserving your date" banner (optional).
+  // Leave empty to show the still photo.
+  reserving: {
+    url: "",
+    poster: "/images/vehicles/tan.jpg",
+    width: 1600,
+  },
 } satisfies Record<string, VideoEntry>;
 
 export type VideoKey = keyof typeof VIDEOS;
