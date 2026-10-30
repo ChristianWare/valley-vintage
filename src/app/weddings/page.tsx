@@ -20,12 +20,13 @@ export default function Page() {
       <WeddingsHero />
       <ServicesScroll />
       <BookingIncludes />
+      <FinalCta />
       <AddOns />
       <div id='packages'>
         <Packages />
       </div>
       <HomeFaq />
-      <FinalCta />
+      {/* <FinalCta /> */}
     </main>
   );
 }
