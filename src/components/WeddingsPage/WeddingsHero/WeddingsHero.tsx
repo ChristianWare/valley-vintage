@@ -7,12 +7,15 @@ import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import styles from "./WeddingsHero.module.css";
 
 const photos = [
-  { src: "/images/vehicles/whiteii.jpg", alt: "A ribbon-wrapped classic car" },
-  { src: "/images/couple.jpg", alt: "A couple beside their wedding car" },
-  { src: "/images/vehicles/red.jpg", alt: "Rosalind outside a venue" },
-  { src: "/images/driver.jpg", alt: "A chauffeur holding the door" },
-  { src: "/images/vehicles/green.jpg", alt: "A convertible ready for an exit" },
-  { src: "/images/vehicles/burg.jpg", alt: "A classic car at golden hour" },
+  { src: "/images/wedding/wedding1.jpg", alt: "A ribbon-wrapped classic car" },
+  {
+    src: "/images/wedding/wedding2.jpg",
+    alt: "A couple beside their wedding car",
+  },
+  { src: "/images/wedding/wedding3.jpg", alt: "Rosalind outside a venue" },
+  { src: "/images/wedding/wedding4.jpg", alt: "A chauffeur holding the door" },
+  { src: "/images/wedding/wedding5.jpg", alt: "A convertible ready for an exit" },
+  { src: "/images/wedding/wedding6.jpg", alt: "A classic car at golden hour" },
 ];
 
 export default function WeddingsHero() {
