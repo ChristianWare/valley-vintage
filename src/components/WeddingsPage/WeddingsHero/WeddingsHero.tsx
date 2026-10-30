@@ -17,57 +17,58 @@ const photos = [
 
 export default function WeddingsHero() {
   return (
-    <section className={styles.hero} aria-labelledby='weddings-heading'>
+    <>
       <Nav />
-
-      <LayoutWrapper>
-        <div className={styles.intro}>
-          <Eyebrow text='Wedding services' />
-          <h1 id='weddings-heading' className={styles.heading}>
-            Your entrance. Your exit. Every mile in between.
-          </h1>
-          <div className={styles.buttons}>
-            <Button
-              href='/book'
-              text='Check your date'
-              btnType='forest'
-              arrow
-            />
-            <Link href='#packages' className={styles.outline}>
-              See packages
-            </Link>
-          </div>
-        </div>
-      </LayoutWrapper>
-
-      {/* image marquee, full width */}
-      <div className={styles.marquee}>
-        <ul className={styles.track}>
-          {[...photos, ...photos].map((p, i) => (
-            <li
-              key={`${p.src}-${i}`}
-              className={styles.photo}
-              aria-hidden={i >= photos.length ? true : undefined}
-            >
-              <Image
-                src={p.src}
-                alt={i >= photos.length ? "" : p.alt}
-                fill
-                sizes='424px'
-                className={styles.img}
+      <section className={styles.hero} aria-labelledby='weddings-heading'>
+        <LayoutWrapper>
+          <div className={styles.intro}>
+            <Eyebrow text='Wedding services' />
+            <h1 id='weddings-heading' className={styles.heading}>
+              Your entrance. Your exit. Every mile in between.
+            </h1>
+            <div className={styles.buttons}>
+              <Button
+                href='/book'
+                text='Check your date'
+                btnType='forest'
+                arrow
               />
-            </li>
-          ))}
-        </ul>
-      </div>
+              <Link href='#packages' className={styles.outline}>
+                See packages
+              </Link>
+            </div>
+          </div>
+        </LayoutWrapper>
 
-      <LayoutWrapper>
-        <h2 className={`h6 ${styles.copy}`}>
-          Choose one perfect moment or let us carry you through the whole day.
-          Every booking includes a uniformed chauffeur, classic ribbon décor and
-          chilled water on board.
-        </h2>
-      </LayoutWrapper>
-    </section>
+        {/* image marquee, full width */}
+        <div className={styles.marquee}>
+          <ul className={styles.track}>
+            {[...photos, ...photos].map((p, i) => (
+              <li
+                key={`${p.src}-${i}`}
+                className={styles.photo}
+                aria-hidden={i >= photos.length ? true : undefined}
+              >
+                <Image
+                  src={p.src}
+                  alt={i >= photos.length ? "" : p.alt}
+                  fill
+                  sizes='424px'
+                  className={styles.img}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <LayoutWrapper>
+          <h2 className={`h6 ${styles.copy}`}>
+            Choose one perfect moment or let us carry you through the whole day.
+            Every booking includes a uniformed chauffeur, classic ribbon décor
+            and chilled water on board.
+          </h2>
+        </LayoutWrapper>
+      </section>
+    </>
   );
 }
