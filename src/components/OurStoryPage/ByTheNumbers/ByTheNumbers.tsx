@@ -6,7 +6,8 @@
 // as you scroll, revealing the next one already sitting behind it. The card
 // itself stays put and clips the slides. After the last slide the page
 // scrolls on as normal.
-// At 568px and below the slides simply stack as separate cards.
+// At 768px and below the same effect runs, with the card in a single
+// column (text, title, subtitle, then the photo).
 //
 // Reused on other pages (e.g. Wedding Services) by passing your own
 // eyebrow, heading and cards. With no props it shows the Our Story numbers.
@@ -52,9 +53,6 @@ const defaultCards: ScrollCard[] = [
   },
 ];
 
-// Matches the stacked layout in the CSS
-const STACKED = "(max-width: 568px)";
-
 export default function ByTheNumbers({
   eyebrow = "By the numbers",
   heading = "Nine years on the road, and every ride still matters",
@@ -76,7 +74,6 @@ export default function ByTheNumbers({
     const track = trackRef.current;
     if (!section || !track) return;
 
-    const stacked = window.matchMedia(STACKED);
     const slides = Array.from(track.children) as HTMLElement[];
     let travel = 0; // how far a slide moves to leave the card
     let scrollLength = 0; // vertical scroll spent going through them all
@@ -88,7 +85,7 @@ export default function ByTheNumbers({
     const reset = () => slides.forEach((el) => (el.style.transform = ""));
 
     const measure = () => {
-      if (stacked.matches || count < 2) {
+      if (count < 2) {
         travel = 0;
         scrollLength = 0;
         section.style.height = "";
@@ -126,12 +123,10 @@ export default function ByTheNumbers({
     measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", measure);
-    stacked.addEventListener("change", measure);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
-      stacked.removeEventListener("change", measure);
       if (frame) cancelAnimationFrame(frame);
     };
   }, [count]);

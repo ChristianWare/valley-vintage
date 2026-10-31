@@ -10,6 +10,8 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  /* phones: the visible screen, excluding the browser bars */
+  height: 100svh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -134,44 +136,19 @@
   }
 }
 
-/* ---------- 568px: stacked cards, no pinning ---------- */
-@media screen and (max-width: 568px) {
-  .section {
-    height: auto !important;
+/* ---------- 768px: same scroll effect, single-column card ---------- */
+@media screen and (max-width: 768px) {
+  .frameWrap {
+    margin-top: 24px;
   }
 
-  .sticky {
-    position: static;
-    height: auto;
-    overflow: visible;
-    padding: 64px 0;
-  }
-
-  .intro {
-    margin-bottom: 0;
-  }
-
-  /* phones: no single card, each slide becomes its own white card */
   .frame {
-    padding: 0;
-    background-color: transparent;
-    overflow: visible;
-  }
-
-  .track {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    padding: 12px;
   }
 
   .card {
-    grid-area: auto;
-    transform: none !important;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
-    padding: 12px;
-    border-radius: 6px;
-    background-color: var(--white);
   }
 
   .cardText {
@@ -191,7 +168,11 @@
     margin-top: 4px;
   }
 
+  /* full width, square, but never taller than ~40% of the screen so the
+     whole card fits while the section is pinned */
   .photo {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 30svh;
   }
 }

@@ -1,5 +1,6 @@
 .section {
   background-color: var(--green50);
+  padding: 10rem 0rem;
 }
 
 .container {
@@ -117,6 +118,10 @@
 }
 
 @media screen and (max-width: 968px) {
+  .section {
+    padding: 7rem 0rem;
+  }
+
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -144,6 +149,10 @@
 }
 
 @media screen and (max-width: 568px) {
+  .section {
+    padding: 5rem 0rem;
+  }
+
   .cards {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;

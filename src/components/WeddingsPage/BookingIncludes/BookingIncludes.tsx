@@ -4,8 +4,8 @@ import RevealText from "@/components/OurStoryPage/Promises/RevealText";
 import Driver from "@/components/shared/icons/Driver/Driver";
 import Wedding from "@/components/shared/icons/Wedding/Wedding";
 import Sparkle from "@/components/shared/icons/Sparkle/Sparkle";
-import Phone from "@/components/shared/icons/Phone/Phone";
-import Clock from "@/components/shared/icons/Clock/Clock";
+// import Phone from "@/components/shared/icons/Phone/Phone";
+// import Clock from "@/components/shared/icons/Clock/Clock";
 import styles from "./BookingIncludes.module.css";
 
 const included = [
@@ -24,16 +24,16 @@ const included = [
     text: "Stocked on board every ride, so you step out fresh and ready for photos.",
     Icon: Sparkle,
   },
-  {
-    title: "A timeline call the week of",
-    text: "We walk through every pickup, stop and cue with you or your planner before the big day.",
-    Icon: Phone,
-  },
-  {
-    title: "Arrival 20 minutes early",
-    text: "Your chauffeur pulls up 20 minutes before your scheduled pickup, decorated and ready.",
-    Icon: Clock,
-  },
+  // {
+  //   title: "A timeline call the week of",
+  //   text: "We walk through every pickup, stop and cue with you or your planner before the big day.",
+  //   Icon: Phone,
+  // },
+  // {
+  //   title: "Arrival 20 minutes early",
+  //   text: "Your chauffeur pulls up 20 minutes before your scheduled pickup, decorated and ready.",
+  //   Icon: Clock,
+  // },
 ];
 
 const facts = [
