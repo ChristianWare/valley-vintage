@@ -30,27 +30,39 @@
   color: var(--white);
 }
 
-/* ---------- Card track ---------- */
+/* ---------- The card (stays still) ---------- */
+.frameWrap {
+  padding: 0 15px;
+}
+
+.frame {
+  max-width: 1096px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 48px;
+  border-radius: 6px;
+  background-color: var(--white);
+  /* slides outside the card are hidden, so they appear to slide in from
+     its right edge */
+  overflow: hidden;
+}
+
+/* ---------- Slides (move inside the card) ---------- */
 .track {
-  --card-w: min(822px, calc(100vw - 60px));
   list-style: none;
+  padding: 0;
   margin: 0;
   display: flex;
-  gap: 32px;
-  width: max-content;
-  /* first card starts centred, last card ends centred */
-  padding: 0 calc((100vw - var(--card-w)) / 2);
+  /* twice the card padding, so the next slide waits just out of sight */
+  column-gap: 96px;
   will-change: transform;
 }
 
 .card {
-  flex: 0 0 var(--card-w);
+  flex: 0 0 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 40px;
-  padding: 48px;
-  border-radius: 6px;
-  background-color: var(--white);
 }
 
 .cardText {
@@ -107,8 +119,15 @@
 }
 
 @media screen and (max-width: 968px) {
-  .card {
+  .frame {
     padding: 32px;
+  }
+
+  .track {
+    column-gap: 64px;
+  }
+
+  .card {
     gap: 24px;
   }
 
@@ -134,11 +153,16 @@
     margin-bottom: 0;
   }
 
+  /* phones: no single card, each slide becomes its own white card */
+  .frame {
+    padding: 0;
+    background-color: transparent;
+    overflow: visible;
+  }
+
   .track {
-    width: auto;
     flex-direction: column;
     gap: 16px;
-    padding: 0 15px;
     transform: none !important;
   }
 
@@ -147,6 +171,8 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     padding: 12px;
+    border-radius: 6px;
+    background-color: var(--white);
   }
 
   .cardText {

@@ -1,9 +1,10 @@
 "use client";
 
-// "By the numbers": white cards that slide sideways as you scroll.
-// The section pins to the screen, vertical scrolling moves the cards from
-// right to left, and once the last card is in place the page scrolls on
-// as normal. At 568px and below the cards simply stack.
+// "By the numbers": one white card, one slide at a time. The section pins
+// to the screen and, as you keep scrolling, the next slide moves in from
+// the right *inside* the card (the card itself stays put and clips the
+// slides). After the last slide the page scrolls on as normal.
+// At 568px and below the slides simply stack as separate cards.
 //
 // Reused on other pages (e.g. Wedding Services) by passing your own
 // eyebrow, heading and cards. With no props it shows the Our Story numbers.
@@ -66,6 +67,7 @@ export default function ByTheNumbers({
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
+  const count = cards.length;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -73,29 +75,33 @@ export default function ByTheNumbers({
     if (!section || !track) return;
 
     const stacked = window.matchMedia(STACKED);
-    let distance = 0;
+    let step = 0; // how far one slide moves (slide width + gap)
+    let scrollLength = 0; // vertical scroll spent sliding through them all
     let frame = 0;
 
-    // How far the track has to travel, and how tall the section must be
-    // so that travel takes exactly that much vertical scrolling.
     const measure = () => {
-      if (stacked.matches) {
-        distance = 0;
+      if (stacked.matches || count < 2) {
+        step = 0;
+        scrollLength = 0;
         section.style.height = "";
         track.style.transform = "";
         return;
       }
-      distance = Math.max(0, track.scrollWidth - window.innerWidth);
-      section.style.height = `${window.innerHeight + distance}px`;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      step = track.clientWidth + gap;
+      // about 80% of a screen of scrolling per slide
+      scrollLength = window.innerHeight * 0.8 * (count - 1);
+      section.style.height = `${window.innerHeight + scrollLength}px`;
       move();
     };
 
     const move = () => {
       frame = 0;
-      if (!distance) return;
+      if (!scrollLength) return;
       const scrolled = -section.getBoundingClientRect().top;
-      const progress = Math.min(1, Math.max(0, scrolled / distance));
-      track.style.transform = `translate3d(${-progress * distance}px, 0, 0)`;
+      const progress = Math.min(1, Math.max(0, scrolled / scrollLength));
+      const x = progress * step * (count - 1);
+      track.style.transform = `translate3d(${-x}px, 0, 0)`;
     };
 
     const onScroll = () => {
@@ -113,7 +119,7 @@ export default function ByTheNumbers({
       stacked.removeEventListener("change", measure);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [cards]);
+  }, [count]);
 
   return (
     <section
@@ -131,29 +137,34 @@ export default function ByTheNumbers({
           </header>
         </LayoutWrapper>
 
-        <ul ref={trackRef} className={styles.track}>
-          {cards.map((c) => (
-            <li key={c.title} className={styles.card}>
-              <div className={styles.cardText}>
-                <p className={styles.text}>{c.text}</p>
-                <div className={styles.cardBottom}>
-                  <Sparkle className={styles.sparkle} />
-                  <h3 className={styles.title}>{c.title}</h3>
-                  <h4 className={`h5 ${styles.subtitle}`}>{c.subtitle}</h4>
-                </div>
-              </div>
-              <div className={styles.photo}>
-                <Image
-                  src={c.src}
-                  alt=''
-                  fill
-                  sizes='(max-width: 568px) 100vw, 440px'
-                  className={styles.img}
-                />
-              </div>
-            </li>
-          ))}
-        </ul>
+        {/* the white card stays still and clips the slides inside it */}
+        <div className={styles.frameWrap}>
+          <div className={styles.frame}>
+            <ul ref={trackRef} className={styles.track}>
+              {cards.map((c) => (
+                <li key={c.title} className={styles.card}>
+                  <div className={styles.cardText}>
+                    <p className={styles.text}>{c.text}</p>
+                    <div className={styles.cardBottom}>
+                      <Sparkle className={styles.sparkle} />
+                      <h3 className={styles.title}>{c.title}</h3>
+                      <h4 className={`h5 ${styles.subtitle}`}>{c.subtitle}</h4>
+                    </div>
+                  </div>
+                  <div className={styles.photo}>
+                    <Image
+                      src={c.src}
+                      alt=''
+                      fill
+                      sizes='(max-width: 568px) 100vw, 440px'
+                      className={styles.img}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
