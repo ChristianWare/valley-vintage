@@ -1,13 +1,8 @@
 "use client";
 
-// "Reserving your date": the same look as the home page wedding film, but
-// edge to edge. Plays a muted Cloudinary clip if one is set in
-// src/lib/videos.ts (key: reserving); otherwise shows the still photo.
-
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
-import Button from "@/components/shared/Button/Button";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import { VIDEOS, videoSources } from "@/lib/videos";
 import styles from "./ReservingDate.module.css";
@@ -137,19 +132,12 @@ export default function ReservingDate() {
                   A $250 deposit holds your car and chauffeur and is applied to
                   your total. The balance is charged automatically 14 days
                   before the wedding. Gratuity is never included, but you can
-                  add it at checkout or after the ride.
-                </p>
-                <p className={styles.copy}>
-                  Your full total, including any travel fee, appears before
-                  checkout. We never add service charges after booking.
+                  add it at checkout or after the ride. Your full total,
+                  including any travel fee, appears before checkout. We never
+                  add service charges after booking.
                 </p>
               </div>
-              <Button
-                href='/book'
-                text='Check your date'
-                btnType='gold'
-                arrow
-              />
+            
             </div>
           </LayoutWrapper>
         </div>

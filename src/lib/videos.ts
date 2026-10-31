@@ -33,7 +33,7 @@ export const VIDEOS = {
   // ▼ Wedding Services "Reserving your date" banner (optional).
   // Leave empty to show the still photo.
   reserving: {
-    url: "",
+    url: "https://res.cloudinary.com/dkxlrhwjd/video/upload/v1793304602/close-up-of-white-rose-wedding-flower-decor-on-a-r-2026-10-24-02-54-11-utc_1_uhbeqe.mp4", // ← Ava & Sam (the card, bottom left)
     poster: "/images/vehicles/tan.jpg",
     width: 1600,
   },

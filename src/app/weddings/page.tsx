@@ -5,7 +5,7 @@ import BookingIncludes from "@/components/WeddingsPage/BookingIncludes/BookingIn
 import AddOns from "@/components/WeddingsPage/AddOns/AddOns";
 import BridalPairing from "@/components/WeddingsPage/BridalPairing/BridalPairing";
 import ReservingDate from "@/components/WeddingsPage/ReservingDate/ReservingDate";
-import Packages from "@/components/HomePage/Packages/Packages";
+// import Packages from "@/components/HomePage/Packages/Packages";
 import HomeFaq from "@/components/HomePage/HomeFaq/HomeFaq";
 import FinalCta from "@/components/HomePage/FinalCta/FinalCta";
 
@@ -25,9 +25,9 @@ export default function Page() {
       <FinalCta />
       <BridalPairing />
       <AddOns />
-      <div id='packages'>
+      {/* <div id='packages'>
         <Packages />
-      </div>
+      </div> */}
       <ReservingDate />
       <HomeFaq />
       {/* <FinalCta /> */}
