@@ -23,11 +23,11 @@ export default function Page() {
       <ServicesScroll />
       <BookingIncludes />
       <FinalCta />
+      <BridalPairing />
       <AddOns />
       <div id='packages'>
         <Packages />
       </div>
-      <BridalPairing />
       <ReservingDate />
       <HomeFaq />
       {/* <FinalCta /> */}

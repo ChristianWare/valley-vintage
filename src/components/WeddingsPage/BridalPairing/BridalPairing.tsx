@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
-import Button from "@/components/shared/Button/Button";
+// import Button from "@/components/shared/Button/Button";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import Car from "@/components/shared/icons/Car/Car";
 import Users from "@/components/shared/icons/Users/Users";
@@ -26,7 +26,7 @@ export default function BridalPairing() {
         <div className={styles.container}>
           <div className={styles.photo}>
             <Image
-              src='/images/couple.jpg'
+              src='/images/party.jpg'
               alt='A couple and their wedding party beside a classic car'
               fill
               sizes='(max-width: 768px) 100vw, 33vw'
@@ -36,7 +36,7 @@ export default function BridalPairing() {
 
           <div className={styles.right}>
             <div className={styles.top}>
-              <Eyebrow text='Bridal Party Pairing · from $1,095' />
+              <Eyebrow text='Bridal Party Pairing' />
               <h2 id='pairing-heading' className={styles.heading}>
                 Bring the whole crew.
               </h2>
@@ -59,7 +59,7 @@ export default function BridalPairing() {
               ))}
             </ul>
 
-            <div className={styles.bottom}>
+            {/* <div className={styles.bottom}>
               <p className={styles.note}>
                 Both vehicles are booked together for 3 hours on one timeline,
                 one invoice and one coordinator.
@@ -70,7 +70,7 @@ export default function BridalPairing() {
                 btnType='forest'
                 arrow
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </LayoutWrapper>
