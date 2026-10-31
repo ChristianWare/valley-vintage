@@ -1,9 +1,11 @@
 "use client";
 
-// "By the numbers": one white card, one slide at a time. The section pins
-// to the screen and, as you keep scrolling, the next slide moves in from
-// the right *inside* the card (the card itself stays put and clips the
-// slides). After the last slide the page scrolls on as normal.
+// "By the numbers": one white card, one slide at a time. The slides are
+// stacked inside the card, the current one on top. The section pins to the
+// screen; each slide holds still for a moment, then slides off to the left
+// as you scroll, revealing the next one already sitting behind it. The card
+// itself stays put and clips the slides. After the last slide the page
+// scrolls on as normal.
 // At 568px and below the slides simply stack as separate cards.
 //
 // Reused on other pages (e.g. Wedding Services) by passing your own
@@ -75,20 +77,26 @@ export default function ByTheNumbers({
     if (!section || !track) return;
 
     const stacked = window.matchMedia(STACKED);
-    let step = 0; // how far one slide moves (slide width + gap)
-    let scrollLength = 0; // vertical scroll spent sliding through them all
+    const slides = Array.from(track.children) as HTMLElement[];
+    let travel = 0; // how far a slide moves to leave the card
+    let scrollLength = 0; // vertical scroll spent going through them all
     let frame = 0;
+
+    // Share of each slide's scroll spent holding still before it slides off
+    const HOLD = 0.3;
+
+    const reset = () => slides.forEach((el) => (el.style.transform = ""));
 
     const measure = () => {
       if (stacked.matches || count < 2) {
-        step = 0;
+        travel = 0;
         scrollLength = 0;
         section.style.height = "";
-        track.style.transform = "";
+        reset();
         return;
       }
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      step = track.clientWidth + gap;
+      // far enough to clear the card's left edge, padding included
+      travel = track.offsetLeft + track.clientWidth + 1;
       // about 80% of a screen of scrolling per slide
       scrollLength = window.innerHeight * 0.8 * (count - 1);
       section.style.height = `${window.innerHeight + scrollLength}px`;
@@ -100,8 +108,15 @@ export default function ByTheNumbers({
       if (!scrollLength) return;
       const scrolled = -section.getBoundingClientRect().top;
       const progress = Math.min(1, Math.max(0, scrolled / scrollLength));
-      const x = progress * step * (count - 1);
-      track.style.transform = `translate3d(${-x}px, 0, 0)`;
+      const position = progress * (count - 1); // 0 … count-1
+
+      // the last slide never moves; every other slide holds, then leaves
+      slides.forEach((el, i) => {
+        if (i === count - 1) return;
+        const local = Math.min(1, Math.max(0, position - i));
+        const t = Math.min(1, Math.max(0, (local - HOLD) / (1 - HOLD)));
+        el.style.transform = `translate3d(${-t * travel}px, 0, 0)`;
+      });
     };
 
     const onScroll = () => {
@@ -141,8 +156,13 @@ export default function ByTheNumbers({
         <div className={styles.frameWrap}>
           <div className={styles.frame}>
             <ul ref={trackRef} className={styles.track}>
-              {cards.map((c) => (
-                <li key={c.title} className={styles.card}>
+              {cards.map((c, i) => (
+                <li
+                  key={c.title}
+                  className={styles.card}
+                  // first slide on top, each next one tucked behind it
+                  style={{ zIndex: cards.length - i }}
+                >
                   <div className={styles.cardText}>
                     <p className={styles.text}>{c.text}</p>
                     <div className={styles.cardBottom}>

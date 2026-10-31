@@ -1,34 +1,38 @@
-import Image from "next/image";
 import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import RevealText from "@/components/OurStoryPage/Promises/RevealText";
+import Driver from "@/components/shared/icons/Driver/Driver";
+import Wedding from "@/components/shared/icons/Wedding/Wedding";
+import Sparkle from "@/components/shared/icons/Sparkle/Sparkle";
+import Phone from "@/components/shared/icons/Phone/Phone";
+import Clock from "@/components/shared/icons/Clock/Clock";
 import styles from "./BookingIncludes.module.css";
 
 const included = [
   {
     title: "A chauffeur who looks the part",
     text: "A pressed suit, white gloves and a flat cap, on every booking.",
-    src: "/images/driver.jpg",
+    Icon: Driver,
   },
   {
     title: "Classic ribbon and bow décor",
     text: "Tied on in ivory, champagne or your wedding color before the car leaves the garage.",
-    src: "/images/vehicles/whiteii.jpg",
+    Icon: Wedding,
   },
   {
     title: "Chilled water and cool towels",
     text: "Stocked on board every ride, so you step out fresh and ready for photos.",
-    src: "/images/couple.jpg",
+    Icon: Sparkle,
   },
   {
     title: "A timeline call the week of",
     text: "We walk through every pickup, stop and cue with you or your planner before the big day.",
-    src: "/images/ladyDriver.jpg",
+    Icon: Phone,
   },
   {
     title: "Arrival 20 minutes early",
     text: "Your chauffeur pulls up 20 minutes before your scheduled pickup, decorated and ready.",
-    src: "/images/vehicles/red.jpg",
+    Icon: Clock,
   },
 ];
 
@@ -54,21 +58,13 @@ export default function BookingIncludes() {
           </header>
 
           <ul className={styles.cards}>
-            {included.map((c) => (
-              <li key={c.title} className={styles.card}>
-                <div className={styles.textBox}>
-                  <h3 className={`h6 ${styles.title}`}>{c.title}</h3>
-                  <p className={styles.text}>{c.text}</p>
+            {included.map(({ Icon, title, text }) => (
+              <li key={title} className={styles.card}>
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardTitle}>{title}</h3>
+                  <p className={styles.cardText}>{text}</p>
                 </div>
-                <div className={styles.thumb}>
-                  <Image
-                    src={c.src}
-                    alt=''
-                    fill
-                    sizes='100px'
-                    className={styles.img}
-                  />
-                </div>
+                <Icon className={styles.icon} aria-hidden='true' />
               </li>
             ))}
           </ul>

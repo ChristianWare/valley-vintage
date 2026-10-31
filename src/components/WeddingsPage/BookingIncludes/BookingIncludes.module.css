@@ -41,43 +41,45 @@
   grid-column: span 3;
 }
 
+/* Cards match the Our Story promises cards */
 .card {
   background-color: var(--white);
   border-radius: 6px;
-  padding: 18px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8rem;
 }
 
-.textBox {
-  margin-bottom: 100px;
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
-/* global .h6 sizing */
-.title {
-  color: var(--green900);
-  margin-bottom: 18px;
-}
-
-.text {
-  font-size: max(1.6rem, 16px);
-  line-height: 1.55;
+.cardTitle {
+  font-size: max(2.4rem, 18px);
+  line-height: 1.2;
+  letter-spacing: -0.66px;
   font-weight: 400;
+  color: var(--green900);
+  max-width: 260px;
+}
+
+.cardText {
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--green600);
 }
 
-.thumb {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin-top: auto;
-  border-radius: 6px;
-  overflow: hidden;
-  background-color: var(--green300);
-}
-
-.img {
-  object-fit: cover;
+.icon {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+  opacity: 0.7;
 }
 
 /* ---------- Scroll-reveal statement + facts ---------- */
@@ -119,6 +121,14 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .card {
+    gap: 6rem;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
   .card:nth-child(n) {
     grid-column: auto;
   }
@@ -130,10 +140,6 @@
 
   .statement {
     margin: 88px auto 56px;
-  }
-
-  .textBox {
-    margin-bottom: 70px;
   }
 }
 
@@ -150,9 +156,5 @@
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 28px;
-  }
-
-  .textBox {
-    margin-bottom: 70px;
   }
 }

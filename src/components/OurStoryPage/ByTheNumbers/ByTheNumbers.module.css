@@ -47,22 +47,24 @@
   overflow: hidden;
 }
 
-/* ---------- Slides (move inside the card) ---------- */
+/* ---------- Slides (stacked inside the card) ---------- */
+/* Every slide sits in the same spot; the top one slides away to the left
+   to uncover the next. */
 .track {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  /* twice the card padding, so the next slide waits just out of sight */
-  column-gap: 96px;
-  will-change: transform;
+  display: grid;
 }
 
 .card {
-  flex: 0 0 100%;
+  grid-area: 1 / 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 40px;
+  /* solid so it fully covers the slide behind it */
+  background-color: var(--white);
+  will-change: transform;
 }
 
 .cardText {
@@ -123,10 +125,6 @@
     padding: 32px;
   }
 
-  .track {
-    column-gap: 64px;
-  }
-
   .card {
     gap: 24px;
   }
@@ -161,13 +159,14 @@
   }
 
   .track {
+    display: flex;
     flex-direction: column;
     gap: 16px;
-    transform: none !important;
   }
 
   .card {
-    flex: none;
+    grid-area: auto;
+    transform: none !important;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     padding: 12px;
