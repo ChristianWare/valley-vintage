@@ -1,0 +1,141 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  max-height: 1100px;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: var(--green900);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* slight overlay, heavier at the bottom where the text sits */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, #000000d1 0%, #00000080 40%, transparent 80%),
+    linear-gradient(#00000040, #00000040);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.inner {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+/* h1 styled as the global .h6 */
+.heading {
+  color: var(--white);
+  max-width: 460px;
+}
+
+/* the huge display line: a plain div, not a heading */
+.display {
+  font-family: var(--TinosRegular);
+  font-size: 210px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--white);
+  white-space: nowrap;
+  margin-top: 12px;
+}
+
+.sub {
+  font-size: max(1.6rem, 16px);
+  line-height: 1.6;
+  font-weight: 400;
+  color: #ffffffd9;
+  max-width: 520px;
+  margin-top: 12px;
+}
+
+.toggle {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff26;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background-color: #ffffff47;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media screen and (max-width: 1468px) {
+  .display {
+    font-size: clamp(111px, 14vw, 210px);
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .display {
+    font-size: 111px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    max-height: 860px;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .display {
+    font-size: 72px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .display {
+    font-size: 40px;
+    letter-spacing: -0.03em;
+  }
+
+  .toggle {
+    right: 12px;
+    bottom: 12px;
+  }
+}

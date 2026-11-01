@@ -1,0 +1,208 @@
+/* Height is set in JS on desktop so each occasion gets its own stretch of
+   scrolling. No overflow: hidden here, or the sticky panel stops sticking. */
+.section {
+  position: relative;
+  background-color: var(--green50);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: 50px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+/* regular global h2 sizing */
+.heading {
+  color: var(--green900);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 50px;
+  align-items: start;
+}
+
+/* ---------- List ---------- */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--green300);
+}
+
+.item {
+  border-bottom: 1px solid var(--green300);
+}
+
+.titleWrap {
+  margin: 0;
+  font-size: inherit;
+}
+
+.itemBtn {
+  width: 100%;
+  font-family: var(--TinosRegular);
+  padding: 14px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.itemBtn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+  font-weight: 400;
+  color: var(--green400);
+  transition: color 0.3s ease;
+}
+
+.open .title,
+.itemBtn:hover {
+  color: var(--green900);
+}
+
+/* smooth open/close */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.open .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+.price {
+  font-family: var(--TinosRegular);
+  font-size: 16px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.text,
+.note {
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--green600);
+}
+
+.text {
+  padding-bottom: 16px;
+}
+
+.note {
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-left: 2px solid var(--gold);
+  background-color: var(--white);
+}
+
+.cta {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--green900);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--gold);
+}
+
+.cta:hover {
+  color: var(--gold);
+}
+
+/* ---------- Photo (cross-fades) ---------- */
+.photo {
+  position: relative;
+  width: 100%;
+  max-height: 550px;
+  aspect-ratio: 839 / 600;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--green300);
+}
+
+.img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.imgActive {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .img,
+  .title {
+    transition: none;
+  }
+}
+
+/* short desktop screens: keep the whole panel on screen */
+@media screen and (min-width: 769px) and (max-height: 820px) {
+  .intro {
+    margin-bottom: 28px;
+  }
+
+  .photo {
+    max-height: 60vh;
+  }
+}
+
+/* ---------- 768px: no pinning, tap to open ---------- */
+@media screen and (max-width: 768px) {
+  .section {
+    height: auto !important;
+  }
+
+  .sticky {
+    position: static;
+    min-height: 0;
+  }
+
+  .intro,
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .intro {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

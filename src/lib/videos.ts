@@ -37,6 +37,12 @@ export const VIDEOS = {
     poster: "/images/vehicles/tan.jpg",
     width: 1600,
   },
+  // ▼ Celebrations page hero background. Swap for any Cloudinary URL.
+  celebrationsHero: {
+    url: "https://res.cloudinary.com/dkxlrhwjd/video/upload/v1793302311/white-classic-car-decorated-with-flowers-for-weddi-2026-10-02-08-15-35-utc_1_ohzci5.mp4",
+    poster: "/images/vehicles/whiteii.jpg",
+    width: 1600,
+  },
 } satisfies Record<string, VideoEntry>;
 
 export type VideoKey = keyof typeof VIDEOS;

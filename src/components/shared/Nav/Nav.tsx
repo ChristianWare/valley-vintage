@@ -15,12 +15,15 @@ import styles from "./Nav.module.css";
  * middle and a Book now button on the right. Below 968px the links and
  * button move into a menu that opens from the hamburger.
  *
+ * `dark` swaps the white pill for dark green with light links (used over
+ * the Celebrations video hero).
  * `overlay` floats the nav over a full-bleed hero (the home page). Every
  * other page renders it in normal flow. The older props are still
  * accepted so existing callers (`<Nav background="white" />`) compile.
  */
 export interface NavProps {
   overlay?: boolean;
+  dark?: boolean;
   navItemColor?: string;
   color?: string;
   hamburgerColor?: string;
@@ -46,7 +49,7 @@ function dashboardFor(roles: AppRole[]): string {
   return "/dashboard";
 }
 
-export default function Nav({ overlay = false }: NavProps) {
+export default function Nav({ overlay = false, dark = false }: NavProps) {
   const pathname = usePathname() ?? "/";
   const { data: session } = useSession();
   const roles = ((session?.user as { roles?: AppRole[] } | undefined)?.roles ??
@@ -83,7 +86,7 @@ export default function Nav({ overlay = false }: NavProps) {
 
   return (
     <header
-      className={`${styles.header} ${overlay ? styles.overlay : styles.inFlow}`}
+      className={`${styles.header} ${overlay ? styles.overlay : styles.inFlow} ${dark ? styles.dark : ""}`}
     >
       <div className={styles.container}>
         <nav className={styles.navInner} aria-label='Main'>

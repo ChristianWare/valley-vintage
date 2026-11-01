@@ -223,3 +223,27 @@
     letter-spacing: -0.4px;
   }
 }
+
+/* ================================
+   Dark variant: dark green pill, light text (desktop pill only;
+   the mobile menu panel keeps its own styling)
+   ================================ */
+.dark .navInner {
+  background-color: var(--green900);
+  border-color: transparent;
+}
+
+.dark .navInner .brand,
+.dark .navInner .logoIcon,
+.dark .navInner .brandName,
+.dark .navInner .link {
+  color: var(--white);
+}
+
+.dark .navInner .active {
+  color: var(--gold);
+}
+
+.dark .bar {
+  background-color: var(--white);
+}
