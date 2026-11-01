@@ -1,0 +1,538 @@
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Stepper ---------- */
+.stepper {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.stepDot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 2px solid var(--green300);
+}
+
+.stepCurrent {
+  border-top-color: var(--gold);
+}
+
+.stepDone {
+  border-top-color: var(--green900);
+}
+
+/* spans: override the global span rule */
+.stepNum {
+  font-family: var(--Helvetica);
+  font-size: 14px;
+  text-transform: none;
+  color: var(--green500);
+}
+
+.stepName {
+  font-family: var(--TinosRegular);
+  font-size: 16px;
+  text-transform: none;
+  color: var(--green900);
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background-color: var(--white);
+  border-radius: 6px;
+  padding: 36px;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.legend {
+  color: var(--green900);
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.helper {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--green600);
+}
+
+.good {
+  font-size: 16px;
+  padding: 12px 14px;
+  border-radius: 4px;
+  background-color: var(--green50);
+  color: var(--green900);
+  border-left: 2px solid var(--gold);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--green900);
+}
+
+.narrow {
+  max-width: 280px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--green300);
+  border-radius: 4px;
+  background-color: var(--green50);
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  color: var(--green900);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+/* ---------- Option cards (services) ---------- */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupTitle {
+  font-family: var(--TinosRegular);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.option,
+.car {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--green300);
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.option:hover,
+.car:hover {
+  border-color: var(--green600);
+}
+
+/* the real radio stays focusable but invisible */
+.option input,
+.car input,
+.pill input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option:has(input:focus-visible),
+.car:has(input:focus-visible),
+.pill:has(input:focus-visible) {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.optionOn {
+  border-color: var(--green900);
+  background-color: var(--green50);
+  box-shadow: inset 0 0 0 1px var(--green900);
+}
+
+.optionTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.optionName {
+  font-family: var(--TinosRegular);
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: none;
+  color: var(--green900);
+}
+
+.optionPrice {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  text-transform: none;
+  color: var(--gold);
+}
+
+.optionText {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  line-height: 1.45;
+  text-transform: none;
+  color: var(--green600);
+}
+
+/* ---------- Cars ---------- */
+.cars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.car {
+  padding: 10px;
+}
+
+.carOff {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.carOff:hover {
+  border-color: var(--green300);
+}
+
+.carImg {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--green300);
+}
+
+.img {
+  object-fit: cover;
+}
+
+.carBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 4px 2px;
+}
+
+.badge {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-family: var(--Helvetica);
+  font-size: 14px;
+  text-transform: none;
+  color: var(--green900);
+  background-color: var(--green50);
+}
+
+/* ---------- Checkboxes & pills ---------- */
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--green900);
+  cursor: pointer;
+}
+
+.check input {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--green900);
+  flex-shrink: 0;
+}
+
+.check span {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  text-transform: none;
+  color: var(--green900);
+}
+
+.check strong {
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.muted {
+  font-style: normal;
+  color: var(--green500);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  position: relative;
+  padding: 10px 18px;
+  border: 1px solid var(--green300);
+  border-radius: 999px;
+  font-size: 16px;
+  color: var(--green900);
+  cursor: pointer;
+}
+
+.pillOn {
+  border-color: var(--green900);
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+/* ---------- Review ---------- */
+.review {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.review div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--green300);
+}
+
+.review dt {
+  font-size: 16px;
+  color: var(--green500);
+}
+
+.review dd {
+  margin: 0;
+  font-size: 16px;
+  text-align: right;
+  color: var(--green900);
+}
+
+.demo {
+  padding: 14px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--green900);
+  background-color: #c7a55c26;
+  border-left: 2px solid var(--gold);
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* ---------- Messages & buttons ---------- */
+.error {
+  margin-top: 18px;
+  font-size: 16px;
+  color: var(--darkRed);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--green300);
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.primary {
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+.secondary {
+  border: 1px solid var(--green900);
+  color: var(--green900);
+}
+
+.primary:hover,
+.secondary:hover {
+  opacity: 0.85;
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Summary ---------- */
+.summary {
+  position: sticky;
+  top: 24px;
+  padding: 24px;
+  border-radius: 6px;
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+.summaryTitle {
+  font-family: var(--TinosRegular);
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.summaryList,
+.lines {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summaryList li,
+.lines li,
+.total {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.summaryList span,
+.lines span,
+.total span {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  text-transform: none;
+  color: var(--white);
+}
+
+.summaryList li span:first-child,
+.lines li span:first-child {
+  color: var(--green400);
+}
+
+.summaryList li span:last-child {
+  text-align: right;
+}
+
+.lines {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #ffffff40;
+}
+
+.total {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--gold);
+}
+
+.total span {
+  font-family: var(--TinosRegular);
+  font-size: 24px;
+}
+
+.small {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--green300);
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 968px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .summary {
+    position: static;
+    order: -1;
+  }
+
+  .stepName {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .panel {
+    padding: 20px;
+  }
+
+  .row2,
+  .options,
+  .cars {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stepper {
+    gap: 4px;
+  }
+}

@@ -1,0 +1,156 @@
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px;
+  border-radius: 6px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.ref {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+/* h1 styled as the global .h2 */
+.heading {
+  font-weight: 400;
+  color: var(--green900);
+  margin-bottom: 16px;
+}
+
+.copy {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--green600);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+.details {
+  width: 100%;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--green300);
+}
+
+.details dt {
+  font-size: 16px;
+  color: var(--green500);
+}
+
+.details dd {
+  margin: 0;
+  font-size: 16px;
+  text-align: right;
+  color: var(--green900);
+}
+
+.lines {
+  width: 100%;
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  border-radius: 6px;
+  background-color: var(--green900);
+  text-align: left;
+}
+
+.lines li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.lines span {
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  text-transform: none;
+  color: var(--white);
+}
+
+.lines li span:first-child {
+  color: var(--green300);
+}
+
+.total {
+  margin: 6px 0;
+  padding-top: 12px !important;
+  border-top: 1px solid var(--gold);
+}
+
+.total span {
+  font-family: var(--TinosRegular) !important;
+  font-size: 22px !important;
+  color: var(--white) !important;
+}
+
+.demo {
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--green500);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-family: var(--Helvetica);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--green900);
+  color: var(--white);
+}
+
+.secondary {
+  border: 1px solid var(--green900);
+  color: var(--green900);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 568px) {
+  .card {
+    padding: 28px 18px;
+  }
+}

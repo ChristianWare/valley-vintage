@@ -16,14 +16,12 @@ const COLUMNS = [
       { text: "Wedding Services", href: "/weddings" },
       { text: "Beyond Weddings", href: "/celebrations" },
       { text: "Gallery", href: "/gallery" },
-      { text: "Venues We Serve", href: "/venues" },
     ],
   },
   {
     title: "Company",
     links: [
       { text: "Our Story", href: "/our-story" },
-      { text: "Planner Accounts", href: "/planners" },
       { text: "Journal", href: "/journal" },
       { text: "FAQ", href: "/faq" },
       { text: "Contact", href: "/contact" },
@@ -32,11 +30,12 @@ const COLUMNS = [
   {
     title: "Your booking",
     links: [
-      { text: "Check your date", href: "/book" },
-      { text: "Log in", href: "/login" },
-      { text: "Create account", href: "/register" },
-      { text: "Booking terms", href: "/terms" },
-      { text: "Privacy", href: "/privacy" },
+      // Portfolio demo: these all point home for now
+      { text: "Check your date", href: "/" },
+      { text: "Log in", href: "/" },
+      { text: "Create account", href: "/" },
+      { text: "Booking terms", href: "/" },
+      { text: "Privacy", href: "/" },
     ],
   },
 ];
@@ -116,7 +115,7 @@ export default async function Footer() {
               <p className={styles.colTitle}>{col.title}</p>
               <ul className={styles.list}>
                 {col.links.map((l) => (
-                  <li key={l.href}>
+                  <li key={l.text}>
                     <Link href={l.href} className={styles.link}>
                       {l.text}
                     </Link>

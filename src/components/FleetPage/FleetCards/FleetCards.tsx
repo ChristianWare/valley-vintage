@@ -117,7 +117,7 @@ export default function FleetCards() {
                   </dl>
                   <div className={styles.btnContainer}>
                     <Button
-                      href='/book'
+                      href={`/book?car=${c.id}`}
                       text={`Book ${c.name}`}
                       btnType='forest'
                       arrow
