@@ -154,7 +154,7 @@ export default function Occasions() {
             <header className={styles.intro}>
               <Eyebrow text='Beyond weddings' />
               <h2 id='occasions-heading' className={styles.heading}>
-                Every occasion deserves a grand entrance
+                Every occasion deserves a grand entrance. 
               </h2>
             </header>
 
