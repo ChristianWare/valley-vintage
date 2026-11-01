@@ -1,6 +1,6 @@
 .hero {
   background-color: var(--green50);
-  padding-top: 5rempx;
+  padding-top: 5rem;
   overflow: hidden;
 }
 
@@ -101,10 +101,6 @@
 }
 
 @media screen and (max-width: 968px) {
-  .hero {
-    padding-top: 110px;
-  }
-
   .photo {
     min-width: 350px;
     height: 350px;

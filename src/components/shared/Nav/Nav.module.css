@@ -189,12 +189,12 @@
     align-items: flex-start;
     gap: 24px;
     position: absolute;
-    top: calc(100% - 4px);
+    top: calc(100% - -10px);
     left: 15px;
     right: 15px;
     padding: 24px 15px;
     background-color: var(--green50);
-    border-radius: 0 0 16px 16px;
+    border-radius:16px;
     box-shadow: 0 12px 30px #0000001f;
   }
 
