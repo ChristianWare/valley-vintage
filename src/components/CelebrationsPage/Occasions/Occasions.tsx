@@ -4,7 +4,8 @@
 // section pins to the screen and scrolling steps through the occasions
 // one by one (the open item and the photo change together); after the
 // last one the page scrolls on. At 768px and below there's no pinning:
-// tap an occasion to open it and show its photo.
+// it's an accordion. The first occasion starts open, tapping another opens
+// it (and closes the rest), and each photo sits under its own text.
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -189,6 +190,16 @@ export default function Occasions() {
                               {o.cta.text}
                             </Link>
                           )}
+                          {/* phones/tablets only: the photo under the text */}
+                          <div className={styles.inlinePhoto}>
+                            <Image
+                              src={o.src}
+                              alt={o.title}
+                              fill
+                              sizes='100vw'
+                              className={styles.inlineImg}
+                            />
+                          </div>
                         </div>
                       </div>
                     </li>

@@ -140,6 +140,11 @@
   color: var(--gold);
 }
 
+/* photo inside each item: hidden on desktop, shown at 768px and below */
+.inlinePhoto {
+  display: none;
+}
+
 /* ---------- Photo (cross-fades) ---------- */
 .photo {
   position: relative;
@@ -204,5 +209,25 @@
 
   .title {
     font-size: 20px;
+  }
+
+  /* the big side photo is replaced by one photo per item */
+  .photo {
+    display: none;
+  }
+
+  .inlinePhoto {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 839 / 600;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--green300);
+  }
+
+  .inlineImg {
+    object-fit: cover;
   }
 }
