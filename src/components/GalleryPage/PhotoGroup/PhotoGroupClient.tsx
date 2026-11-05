@@ -42,9 +42,12 @@ export default function PhotoGroupClient({
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    // Lock on <html> too so smooth scrolling (Lenis) pauses with the lightbox
+    document.documentElement.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isOpen, close, prev, next]);
 

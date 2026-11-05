@@ -30,6 +30,7 @@ import {
   type ConfirmedBooking,
 } from "@/lib/vintageBooking/data";
 import styles from "./BookingWizard.module.css";
+import { scrollToY } from "@/lib/smoothScroll";
 
 const STEPS = [
   "Your date",
@@ -186,7 +187,7 @@ export default function BookingWizard({
     setError(msg);
     if (msg) return;
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToY(0);
   };
 
   const back = () => {

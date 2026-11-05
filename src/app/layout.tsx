@@ -6,6 +6,7 @@ import Footer from "@/components/shared/Footer/Footer";
 import SessionProviderWrap from "@/components/Providers/SessionProvider";
 import ToastsProvider from "@/components/Providers/ToastsProvider";
 import ScrollToTop from "@/components/shared/ScrollToTop/ScrollToTop";
+import SmoothScroll from "@/components/Providers/SmoothScroll";
 import PlausibleProvider from "next-plausible";
 import { SITE } from "@/config/site";
 import { serviceAreaCities } from "@/lib/cities";
@@ -135,6 +136,7 @@ export default function RootLayout({
           }}
         />
         <ScrollToTop />
+        <SmoothScroll />
         <PlausibleProvider
           domain={SITE.domain}
           trackLocalhost={false}

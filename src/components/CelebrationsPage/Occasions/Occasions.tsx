@@ -13,6 +13,7 @@ import Link from "next/link";
 import Eyebrow from "@/components/shared/Eyebrow/Eyebrow";
 import LayoutWrapper from "@/components/shared/LayoutWrapper";
 import styles from "./Occasions.module.css";
+import { scrollToY } from "@/lib/smoothScroll";
 
 type Occasion = {
   title: string;
@@ -136,7 +137,7 @@ export default function Occasions() {
     if (section && window.matchMedia(PINNED).matches) {
       const top = section.getBoundingClientRect().top + window.scrollY;
       const step = window.innerHeight * STEP;
-      window.scrollTo({ top: top + step * i + 2, behavior: "smooth" });
+      scrollToY(top + step * i + 2);
     } else {
       setActive(i);
     }
