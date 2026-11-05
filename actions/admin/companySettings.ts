@@ -138,9 +138,17 @@ export type CompanySettingsData = {
  * Get company settings - accessible by anyone (drivers need this for support page)
  */
 export async function getCompanySettings(): Promise<CompanySettingsData> {
-  const row = await db.companySettings.findUnique({
-    where: { id: "default" },
-  });
+  // No database (e.g. static demo deploy)? Fall back to the defaults below.
+  let row: Awaited<ReturnType<typeof db.companySettings.findUnique>> = null;
+  if (process.env.DATABASE_URL) {
+    try {
+      row = await db.companySettings.findUnique({
+        where: { id: "default" },
+      });
+    } catch (e) {
+      console.warn("[companySettings] DB unavailable, using defaults:", e);
+    }
+  }
 
   const officeHours = row?.officeHours ?? DEFAULTS.officeHours;
   let officeHoursParsed: WeekHours;
