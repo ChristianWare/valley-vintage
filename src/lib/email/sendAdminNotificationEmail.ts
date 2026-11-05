@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { SITE } from "@/config/site";
 
 export async function sendAdminNotificationEmail(args: {

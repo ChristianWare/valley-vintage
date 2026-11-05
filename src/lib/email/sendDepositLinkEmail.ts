@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { getCompanySettings } from "../../../actions/admin/companySettings";
 import { SITE } from "@/config/site";
 

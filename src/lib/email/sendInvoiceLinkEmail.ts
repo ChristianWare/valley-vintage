@@ -1,6 +1,6 @@
 // src/lib/email/sendInvoiceLinkEmail.ts
 import { companyDisplayName } from "@/lib/companyName";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { getCompanySettings } from "../../../actions/admin/companySettings";
 import { renderInvoicePdfBuffer } from "@/lib/invoice/buildInvoicePdfData";
 

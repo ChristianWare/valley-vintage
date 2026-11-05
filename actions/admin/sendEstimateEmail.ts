@@ -2,7 +2,7 @@
 
 // src/actions/admin/sendEstimateEmail.ts
 
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { auth } from "../../auth";
 import { db } from "@/lib/db";
 import { getCompanySettings } from "./companySettings";

@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import { welcomeHtml, welcomeText } from "./templates/welcome";
 import { SITE } from "@/config/site";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 const BRAND = SITE.name;
 const CONTACT_FROM = process.env.CONTACT_FROM || process.env.SMTP_USER;
@@ -12,6 +13,9 @@ function requireEnv(name: string) {
 }
 
 export async function sendWelcomeEmail(to: string, name?: string | null) {
+  // Demo mode: no SMTP send.
+  if (DEMO_FORMS_SILENT) return;
+
   requireEnv("SMTP_HOST");
   requireEnv("SMTP_PORT");
   requireEnv("SMTP_USER");

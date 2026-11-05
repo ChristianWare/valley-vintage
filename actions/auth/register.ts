@@ -8,6 +8,7 @@ import {
 import { getUserByEmail } from "@/lib/user";
 import { RegisterSchema, RegisterSchemaType } from "@/schemas/RegisterSchema";
 import bcrypt from "bcryptjs";
+import { DEMO_FORMS_SILENT } from "@/config/demo";
 
 export const signUp = async (values: RegisterSchemaType) => {
   const validateFields = RegisterSchema.safeParse(values);
@@ -25,8 +26,14 @@ export const signUp = async (values: RegisterSchemaType) => {
       name,
       email,
       password: hashedPassword,
+      // Demo mode: no verification email can arrive, so verify immediately.
+      ...(DEMO_FORMS_SILENT && { emailVerified: new Date() }),
     },
   });
+
+  if (DEMO_FORMS_SILENT) {
+    return { success: "Account created! You can log in now." };
+  }
 
   const emailVerificationToken = await generateEmailVerificationToken(email);
   const result = await sendEmailVerificationToken(

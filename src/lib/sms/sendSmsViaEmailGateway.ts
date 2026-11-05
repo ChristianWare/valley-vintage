@@ -17,7 +17,7 @@
 // upgrade later, swap the call in src/lib/notifications/queue.ts.
 
 import "server-only";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

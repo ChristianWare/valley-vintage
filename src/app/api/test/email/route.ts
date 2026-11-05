@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { SITE } from "@/config/site";
 
 export const runtime = "nodejs";

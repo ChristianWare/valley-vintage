@@ -5,7 +5,7 @@
 // plain subject/HTML/text so they're easy to test; send() delivers them.
 
 import { SITE } from "@/config/site";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 
 const FROM = process.env.EMAIL_FROM || `${SITE.name} <${SITE.email.noReply}>`;
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/lib/email/sendInvoiceReceiptEmail.ts
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { getCompanySettings } from "../../../actions/admin/companySettings";
 import { renderInvoicePdfBuffer } from "@/lib/invoice/buildInvoicePdfData";
 import { SITE } from "@/config/site";

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/lib/email/sendBookingRequestedEmail.ts
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { createElement } from "react";
 import { getCompanySettings } from "../../../actions/admin/companySettings";

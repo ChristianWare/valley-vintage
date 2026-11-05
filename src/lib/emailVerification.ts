@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { db } from "./db";
 import { v4 as uuidv4 } from "uuid";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { getCompanySettings } from "../../actions/admin/companySettings";
 import { SITE } from "@/config/site";
 

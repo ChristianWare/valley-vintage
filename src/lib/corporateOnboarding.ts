@@ -1,7 +1,7 @@
 // src/lib/corporateOnboarding.ts
 import { db } from "./db";
 import { v4 as uuidv4 } from "uuid";
-import { Resend } from "resend";
+import { Resend } from "@/lib/email/resend";
 import { SITE } from "@/config/site";
 
 /* ─────────────────────────────────────────────
